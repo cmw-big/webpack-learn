@@ -126,7 +126,7 @@ const config: Configuration = {
     ],
   },
   plugins: [
-    //   将ts的类型检查放入单独的进程
+    //   将ts的类型检查放入单独的进程。不然每次热更新编译一次的话。类型检查都会比较慢
     new ForkTsCheckerWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: resolve(__dirname, 'public/index.html'),
