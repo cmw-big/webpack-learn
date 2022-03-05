@@ -13,3 +13,5 @@ class Person {}
 
 const p = new Person()
 const 程明旺 = 1
+
+const a = 1
