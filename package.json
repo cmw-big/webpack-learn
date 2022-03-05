@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack server"
+    "start": "webpack server",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -18,14 +19,22 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/webpack": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.6.0",
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-webpack-plugin": "^3.1.1",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^7.0.4",
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "mini-css-extract-plugin": "^2.5.3",
+    "prettier": "^2.5.1",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "source-map-loader": "^3.0.1",
@@ -42,8 +51,14 @@
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/runtime-corejs3": "^7.17.2",
     "@types/webpack-bundle-analyzer": "^4.4.1",
+    "core-js": "^3.21.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tslib": "^2.3.1"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix --cache"
+    ]
   }
 }
