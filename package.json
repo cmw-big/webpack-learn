@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack server",
+    "build": "cross-env SF_ENV=work NODE_ENV=production webpack --config ./build/webpack.config.ts",
+    
+    "build:test": "cross-env SF_ENV=test NODE_ENV=production webpack --config ./build/webpack.config.ts",
+    "start": "cross-env NODE_ENV=development webpack server --config ./build/webpack.config.ts",
+    "start:work": "cross-env SF_ENV=work pnpm start",
     "prepare": "husky install"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "webpack-learn"
+  ],
+  "author": "chengmingwang",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.5",
@@ -25,10 +30,14 @@
     "@typescript-eslint/parser": "^5.13.0",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.6.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-webpack-plugin": "^3.1.1",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "html-webpack-plugin": "^5.5.0",
@@ -48,13 +57,18 @@
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.7.4"
+    "webpack-dev-server": "^4.7.4",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/runtime-corejs3": "^7.17.2",
     "@types/webpack-bundle-analyzer": "^4.4.1",
+    "D": "^1.0.0",
     "core-js": "^3.21.1",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": ">=2.25.3 <3.0.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "tslib": "^2.3.1"

@@ -1,17 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { render } from 'react-dom'
-render(<h1>hello</h1>, document.getElementById('root'))
 
-function test(): ClassDecorator {
-  return target => {
-    console.log(target)
+function App() {
+  const [count, setCount] = useState(0)
+  const handleIncrease = () => {
+    setCount(count + 1)
   }
+  return <div onClick={handleIncrease}>{count}</div>
 }
 
-@test()
-class Person {}
+render(<App />, document.getElementById('root'))
 
-const p = new Person()
-const 程明旺 = 1
-
-const a = 1
+console.log(process.env.NODE_ENV)
