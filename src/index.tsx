@@ -11,4 +11,4 @@ function App() {
 
 render(<App />, document.getElementById('root'))
 
-console.log(process.env.NODE_ENV)
+Array.from({ length: 100, 1: 1 })

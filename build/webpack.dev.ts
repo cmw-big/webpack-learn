@@ -20,6 +20,6 @@ const devServer: DevServerConfiguration = {
 
 export default webpackMerge(baseConfig, {
   devServer,
-  devtool: 'eval-cheap-module-source-map', // 最适合开发环境的source-map
+  // devtool: 'eval-source-map', // 最适合开发环境的source-map,初始化慢，rebuild快
   mode: 'development'
 })

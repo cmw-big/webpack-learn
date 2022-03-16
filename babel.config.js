@@ -2,7 +2,7 @@ module.exports = {
   presets: [
     '@babel/react',
     [
-      '@babel/env',
+      '@babel/preset-env',
       {
         targets: {
           edge: '17',

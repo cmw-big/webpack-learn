@@ -4,12 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env SF_ENV=work NODE_ENV=production webpack --config ./build/webpack.config.ts",
-    
-    "build:test": "cross-env SF_ENV=test NODE_ENV=production webpack --config ./build/webpack.config.ts",
+    "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.config.ts --watch",
+    "build:work": "cross-env SF_ENV=work pnpm build",
+    "build:test": "cross-env SF_ENV=test pnpm build",
     "start": "cross-env NODE_ENV=development webpack server --config ./build/webpack.config.ts",
-    "start:work": "cross-env SF_ENV=work pnpm start",
-    "prepare": "husky install"
+    "start:work": "cross-env SF_ENV=work pnpm start"
   },
   "keywords": [
     "webpack-learn"
@@ -18,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@commitlint/cli": "^16.2.1",
@@ -39,6 +39,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-webpack-plugin": "^3.1.1",
+    "filemanager-webpack-plugin": "^6.1.7",
     "fork-ts-checker-webpack-plugin": "^7.2.1",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^7.0.4",
@@ -61,7 +62,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/runtime-corejs3": "^7.17.2",
     "@types/webpack-bundle-analyzer": "^4.4.1",
     "D": "^1.0.0",
