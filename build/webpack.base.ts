@@ -11,7 +11,7 @@ import { cwd } from 'process'
 
 // webpack全局配置
 const config: Configuration = {
-  context: __dirname, // 入口的基本目录，是绝对路径。入口基于这个找
+  context: resolve(cwd()), // 入口的基本目录，是绝对路径。入口基于这个找
   entry: { app: resolve(cwd(), 'src/index.tsx') },
   output: {
     path: resolve(cwd(), 'dist'),
@@ -127,7 +127,8 @@ const config: Configuration = {
       extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
       exclude: 'node_modules',
       fix: true,
-      emitWarning: false
+      emitWarning: false,
+      threads: true
     }),
     new HtmlWebpackPlugin({
       template: resolve(cwd(), 'public/index.html')

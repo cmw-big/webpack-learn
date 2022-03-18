@@ -1,14 +1,10 @@
-import React, { useState } from 'react'
+import React, { StrictMode } from 'react'
 import { render } from 'react-dom'
+import App from './App'
 
-function App() {
-  const [count, setCount] = useState(0)
-  const handleIncrease = () => {
-    setCount(count + 1)
-  }
-  return <div onClick={handleIncrease}>{count}</div>
-}
-
-render(<App />, document.getElementById('root'))
-
-console.log(process.env.NODE_ENV)
+render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById('root')
+)
