@@ -7,9 +7,6 @@ module.exports = {
     // 使用@typescript-eslint/eslint-plugin的推荐规则
     'plugin:@typescript-eslint/recommended',
     'airbnb',
-    // 使用eslint-config-prettier来禁用@typescript-eslint/eslint-plugin中与prettier冲突的ESLint规则
-    'prettier',
-    // 启用eslint-plugin-prettier和eslint-config-prettier。
     // 这会将prettier错误作为ESLint错误来展示。确保这个配置放到数组的最后。
     'plugin:prettier/recommended'
   ],
@@ -33,24 +30,30 @@ module.exports = {
     'import/resolver': {
       // use a glob pattern
       typescript: {
-        directory: './packages/*/tsconfig.json'
+        directory: './packages/**/tsconfig.json'
       }
     }
   },
   rules: {
-    'no-console': 1,
+    'no-console': [1, { allow: ['warn', 'error'] }], // 使用console除了规定的都警告
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'no-unused-vars': 0,
+    'no-unused-vars': 1, // 有声明后未被使用的变量警告
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', 'ts', 'tsx'] }
-    ],
-    'no-debugger': 1,
+    ], // 在哪些文件扩展名后可以使用jsx语法。如果不是这些文件扩展名就警告
+    'no-debugger': 1, // 使用debugger警告
     'jsx-a11y/no-noninteractive-element-interactions': 0, // 关闭强制要求非交互语义标签(main,hX,ul,ol,liarea)不包含交互事件(onClick等)
     'jsx-a11y/no-static-element-interactions': 0,
     'jsx-a11y/click-events-have-key-events': 0, // 关闭强制一个可单击的非交互元素至少有一个键盘事件监听器。
     'import/extensions': 0,
     'import/no-mutable-exports': 0,
-    'import/prefer-default-export': 0
+    'import/prefer-default-export': 0,
+    'react/state-in-constructor': 0, // 关闭state必须在constructor中定义
+    'react/static-property-placement': [1, 'static public field'],
+    'react/no-unused-state': 0, // 未使用过的state不报错
+    'class-methods-use-this': 0, // 在class中的方法中不使用this不报错
+    'react/prop-types': 0, // 关闭强制使用prop-types校验props，如果使用ts，直接可以不用使用这个了
+    'react/destructuring-assignment': 0 // 关闭react的解构赋值警告
   }
 }

@@ -1,6 +1,12 @@
 module.exports = {
   presets: [
-    '@babel/react',
+    [
+      '@babel/preset-react',
+      {
+        runtime: 'automatic',
+        development: process.env.NODE_ENV !== 'production'
+      }
+    ],
     [
       '@babel/preset-env',
       {
@@ -14,6 +20,7 @@ module.exports = {
         useBuiltIns: 'usage',
         corejs: '3.21',
         debug: true,
+        modules: false,
         shippedProposals: true // 将代码中提案的也进行转化
       }
     ]
