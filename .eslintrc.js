@@ -7,6 +7,7 @@ module.exports = {
     // 使用@typescript-eslint/eslint-plugin的推荐规则
     'plugin:@typescript-eslint/recommended',
     'airbnb',
+    'plugin:react-hooks/recommended',
     // 这会将prettier错误作为ESLint错误来展示。确保这个配置放到数组的最后。
     'plugin:prettier/recommended'
   ],
@@ -54,6 +55,8 @@ module.exports = {
     'react/no-unused-state': 0, // 未使用过的state不报错
     'class-methods-use-this': 0, // 在class中的方法中不使用this不报错
     'react/prop-types': 0, // 关闭强制使用prop-types校验props，如果使用ts，直接可以不用使用这个了
-    'react/destructuring-assignment': 0 // 关闭react的解构赋值警告
+    'react/destructuring-assignment': 0, // 关闭react的解构赋值警告
+    'react/react-in-jsx-scope': 0, // 关闭函数组件必须导入react的警告。因为用了babel的插件，可以自动导入
+    'react/jsx-uses-react': 0
   }
 }

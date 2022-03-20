@@ -63,7 +63,6 @@ dependencies:
   core-js: 3.21.1
   eslint-config-airbnb: 19.0.4_c7d04ecf5eaa64250a4220a14895c52e
   eslint-plugin-import: 2.25.4_eslint@8.10.0
-  eslint-plugin-react-hooks: 4.3.0_eslint@8.10.0
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
   tslib: 2.3.1
@@ -91,6 +90,7 @@ devDependencies:
   eslint-plugin-jsx-a11y: 6.5.1_eslint@8.10.0
   eslint-plugin-prettier: 4.0.0_f3d13a703a9c1079e3d1af6044603beb
   eslint-plugin-react: 7.29.3_eslint@8.10.0
+  eslint-plugin-react-hooks: 4.3.0_eslint@8.10.0
   eslint-webpack-plugin: 3.1.1_eslint@8.10.0+webpack@5.69.1
   filemanager-webpack-plugin: 6.1.7_webpack@5.69.1
   fork-ts-checker-webpack-plugin: 7.2.1_typescript@4.5.5+webpack@5.69.1
@@ -3603,7 +3603,7 @@ packages:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
     dependencies:
       eslint: 8.10.0
-    dev: false
+    dev: true
 
   /eslint-plugin-react/7.29.3_eslint@8.10.0:
     resolution: {integrity: sha512-MzW6TuCnDOcta67CkpDyRfRsEVx9FNMDV8wZsDqe1luHPdGTrQIUaUXD27Ja3gHsdOIs/cXzNchWGlqm+qRVRg==}

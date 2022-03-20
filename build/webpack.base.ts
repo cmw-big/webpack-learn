@@ -1,12 +1,11 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { resolve, join } from 'path'
-import { Configuration, DefinePlugin, SourceMapDevToolPlugin } from 'webpack'
+import { resolve } from 'path'
+import { Configuration, DefinePlugin } from 'webpack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type { LoaderOptions } from 'mini-css-extract-plugin'
 import EslintPlugin from 'eslint-webpack-plugin'
-import FileManagerWebpackPlugin from 'filemanager-webpack-plugin'
 import { cwd } from 'process'
 
 // webpack全局配置
@@ -61,7 +60,12 @@ const config: Configuration = {
             options: {
               // 只做代码转化，不做类型检查
               transpileOnly: true,
-              configFile: resolve(cwd(), 'tsconfig.json')
+              configFile: resolve(
+                cwd(),
+                `tsconfig${
+                  process.env.NODE_ENV !== 'production' ? '.dev' : ''
+                }.json`
+              )
             }
           }
         ],
@@ -140,24 +144,6 @@ const config: Configuration = {
     // 定义全局变量,将代码中进行文本的替换
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    // 针对source-map的设置，生成哪些map文件
-    new SourceMapDevToolPlugin({
-      filename: '[file].map',
-      append: '\n//# sourceMappingURL=http://localhost:12345/sourcemap/[url]'
-    }),
-    new FileManagerWebpackPlugin({
-      events: {
-        onEnd: {
-          copy: [
-            {
-              source: resolve(cwd(), 'dist/**/*.map'),
-              destination: resolve(cwd(), 'sourcemap')
-            }
-          ],
-          delete: [resolve(cwd(), 'dist/**/*.map')]
-        }
-      }
     })
     // new BundleAnalyzerPlugin({}),
   ]

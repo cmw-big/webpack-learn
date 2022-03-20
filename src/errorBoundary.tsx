@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react'
+import React, { Component, ErrorInfo } from 'react'
 
 export default class ErrorBoundary extends Component {
   state = {
@@ -14,12 +14,6 @@ export default class ErrorBoundary extends Component {
     }
   }
 
-  constructor(props: any) {
-    super(props)
-    const { count } = this.state
-    alert(count)
-  }
-
   // 页面没有阻塞，才会执行。
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.log(error, errorInfo, 'componentDidCatch')
@@ -31,10 +25,6 @@ export default class ErrorBoundary extends Component {
     if (hasError) {
       return <h1>{count}</h1>
     }
-    return (
-      <>
-        {children} <h1>{count}</h1>
-      </>
-    )
+    return children
   }
 }

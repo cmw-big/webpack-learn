@@ -26,7 +26,6 @@ module.exports = {
     ]
   ],
   plugins: [
-    'react-require',
     // 将一些babel生成的helper方法，弄成公共的，而不是每一个地方都引用一次帮助方法。
     [
       '@babel/plugin-transform-runtime',

@@ -1,60 +1,43 @@
-/* eslint-disable react/jsx-pascal-case */
-import React, {
-  Component,
-  createContext,
-  createRef,
-  lazy,
-  RefObject,
-  Suspense,
-  SyntheticEvent
-} from 'react'
-import { createPortal } from 'react-dom'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { AContext } from './context'
-import ErrorBoundary from './layout'
+import ErrorBoundary from './errorBoundary'
 
 const A = lazy(() => import('./components/A'))
 
 // 这个上下文，赋值
 
-export default class App extends Component {
-  static contextType = createContext({ a: 1 })
+export default function App() {
+  // react会内部缓存State的状态，所以这里的通过SetCount改变的值，不会重新继续初始化。
+  const [count, setCount] = useState(0)
+  const h1Ref = useRef<HTMLHeadingElement>(null)
+  const divRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    console.log('h1Ref', h1Ref.current, count)
+    console.log('divRef', divRef.current, count)
 
-  A: RefObject<HTMLHeadingElement> = createRef()
+    return () => {
+      console.log('清除')
+    }
+  }, [count])
 
-  state = {
-    a: 1
-  }
-
-  constructor(props: any) {
-    super(props)
-    const { a } = this.state
-    this.setState(
-      {
-        a: a + 1
-      },
-      () => {
-        console.log(this.state.a)
-      }
-    )
-  }
-
-  componentDidMount() {
-    //   render已经执行完成，可以进行网络数据的获取，然后重新进行setState
-  }
-
-  render() {
-    return (
-      <ErrorBoundary>
-        <AContext.Provider value={this.state}>
-          <Suspense fallback={<h1>我在加载</h1>}>
-            <A ref={this.A} />
-          </Suspense>
-          <div id="parent">
-            <div id="child">儿子</div>
+  return (
+    <ErrorBoundary>
+      <AContext.Provider value={count}>
+        <Suspense fallback={<h1>我在加载</h1>}>
+          <A ref={h1Ref} />
+        </Suspense>
+        <div id="parent">
+          <div
+            ref={divRef}
+            id="child"
+            onClick={() => {
+              setCount(count + 1)
+            }}
+          >
+            儿子
           </div>
-        </AContext.Provider>
-        {createPortal(<h1>我在外面的h1</h1>, document.body)}
-      </ErrorBoundary>
-    )
-  }
+        </div>
+      </AContext.Provider>
+    </ErrorBoundary>
+  )
 }

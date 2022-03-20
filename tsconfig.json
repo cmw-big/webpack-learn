@@ -2,7 +2,7 @@
   "compilerOptions": {
     "incremental": true /* Enable incremental compilation */,
     "target": "ESNEXT" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-    "jsx": "react" /* Specify what JSX code is generated. */,
+    "jsx": "react-jsx" /* Specify what JSX code is generated. */,
     "experimentalDecorators": true /* Enable experimental support for TC39 stage 2 draft decorators. */,
     "emitDecoratorMetadata": true /* Emit design-type metadata for decorated declarations in source files. */,
     "module": "ESNEXT" /* Specify what module code is generated. */,
