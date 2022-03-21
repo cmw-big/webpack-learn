@@ -21,7 +21,7 @@ module.exports = {
   env: {
     // 指定代码的运行环境
     browser: true,
-    node: true
+    es2022: true
   },
   settings: {
     'import/parsers': {
@@ -58,5 +58,13 @@ module.exports = {
     'react/destructuring-assignment': 0, // 关闭react的解构赋值警告
     'react/react-in-jsx-scope': 0, // 关闭函数组件必须导入react的警告。因为用了babel的插件，可以自动导入
     'react/jsx-uses-react': 0
-  }
+  },
+  overrides: [
+    {
+      files: ['*.ts?(x)'], // ts或者tsx文件，不检查没有定义的变量。因为ts本身就会检查这个
+      rules: {
+        'no-undef': 'off'
+      }
+    }
+  ]
 }
