@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react'
 
-// 一个定时器的hooks
-export default function useTimer(count: number, duration: number) {
+export default function useTimer(count = 60, duration = 1000) {
   const [time, setTime] = useState(count)
-  let timer: NodeJS.Timeout
   useEffect(() => {
-    if (time <= 0 && timer) {
-      clearTimeout(timer)
-      return
-    }
-    timer = setTimeout(() => {
+    const timer = setTimeout(() => {
+      if (time <= 0 && timer) {
+        console.log(timer, 'timer')
+        clearTimeout(timer)
+        return
+      }
       setTime(time - 1)
     }, duration)
-    return () => {
-      if (timer) {
-        clearTimeout(timer)
-      }
-    }
+    return () => clearTimeout(timer)
   }, [time, duration])
+  return time
 }
+const a: NodeJS.Timeout = setTimeout(() => {
+  console.log('a')
+})
+console.log(a)
