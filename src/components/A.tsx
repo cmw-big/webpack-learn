@@ -1,10 +1,9 @@
-import { ForwardedRef, forwardRef, useContext } from 'react'
-import { AContext } from '../context'
+import { ForwardedRef, forwardRef } from 'react'
 import useTimer from '../hooks/useTimer'
 
 function A(props: any, ref: ForwardedRef<HTMLHeadingElement>) {
   // 得到当前最近的上下文组件提供的值。
-  const count = useContext(AContext)
+  // const count = useContext(AContext)
   const time = useTimer(3, 1000)
   return (
     <>

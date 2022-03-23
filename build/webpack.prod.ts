@@ -10,7 +10,7 @@ export default webpackMerge(baseConfig, {
     react: 'React', // key是模块中引入的包的名称，value是最终cdn导出后暴露在全局的变量。
     'react-dom': 'ReactDOM'
   },
-  mode: 'development',
+  mode: 'production',
   plugins: [
     // 针对source-map的设置，生成哪些map文件。并且后端是多少可以自己添加。在线上出问题的时候。可以进行排查。
     new SourceMapDevToolPlugin({
@@ -32,6 +32,5 @@ export default webpackMerge(baseConfig, {
       }
     })
   ]
-
   // devtool: 'hidden-source-map' // 最适合生产环境的source-map
 })
