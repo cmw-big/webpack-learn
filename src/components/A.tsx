@@ -1,16 +1,28 @@
-import { ForwardedRef, forwardRef } from 'react'
+import { forwardRef, ForwardRefRenderFunction, useLayoutEffect } from 'react'
 import useTimer from '../hooks/useTimer'
 
-function A(props: any, ref: ForwardedRef<HTMLHeadingElement>) {
-  // 得到当前最近的上下文组件提供的值。
-  // const count = useContext(AContext)
+let a: any
+// ref是确定的一个
+const A: ForwardRefRenderFunction<HTMLHeadingElement> = (props, ref) => {
   const time = useTimer(3, 1000)
+  useLayoutEffect(() => {
+    const btn = document.getElementById('btn')
+    if (btn) {
+      btn.style.fontSize = '20px'
+    }
+    const start = Date.now()
+    while (Date.now() - start < 1000) {
+      a = time
+    }
+  }, [time])
   return (
     <>
       <h1 ref={ref}>time:{time}</h1>
-      <button type="button">改变title</button>
+      <button id="btn" type="button">
+        改变title
+      </button>
     </>
   )
 }
 
-export default forwardRef<HTMLHeadingElement, any>(A)
+export default forwardRef<HTMLHeadingElement>(A)

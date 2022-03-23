@@ -16,7 +16,6 @@ export default function useTimer(count = 60, duration = 1000) {
       }
       setTime(time - 1)
     }, duration)
-    // 组件卸载的时候，也会自动的调用。更新的时候也会自动调用。不用担心之前的副作用没有清除。
     return () => clearTimeout(timer)
   }, [time, duration])
   return time
