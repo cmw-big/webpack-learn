@@ -1,25 +1,27 @@
-import { forwardRef, ForwardRefRenderFunction, useLayoutEffect } from 'react'
-import useTimer from '../hooks/useTimer'
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  useCallback,
+  useState
+} from 'react'
+import { Link } from 'react-router-dom'
+import { Transition } from 'react-transition-group'
 
-let a: any
-// ref是确定的一个
 const A: ForwardRefRenderFunction<HTMLHeadingElement> = (props, ref) => {
-  const time = useTimer(3, 1000)
-  useLayoutEffect(() => {
-    const btn = document.getElementById('btn')
-    if (btn) {
-      btn.style.fontSize = '20px'
-    }
-    const start = Date.now()
-    while (Date.now() - start < 1000) {
-      a = time
-    }
-  }, [time])
+  const [inProp, setInProp] = useState(false)
+  const handleShow = useCallback(() => {
+    setInProp(true)
+  }, [])
+
   return (
     <>
-      <h1 ref={ref}>time:{time}</h1>
-      <button id="btn" type="button">
-        改变title
+      <Transition mountOnEnter in={inProp} timeout={500}>
+        {state => <div>{state}</div>}
+      </Transition>
+      <Link to="/a" />
+      <h1 ref={ref}>time:{}</h1>
+      <button id="btn" type="button" onClick={handleShow}>
+        show
       </button>
     </>
   )

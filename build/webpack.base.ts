@@ -5,7 +5,6 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type { LoaderOptions } from 'mini-css-extract-plugin'
-import EslintPlugin from 'eslint-webpack-plugin'
 import { cwd } from 'process'
 
 // webpack全局配置
@@ -21,7 +20,8 @@ const config: Configuration = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     alias: {
-      env: resolve(cwd(), `src/env/${process.env.SF_ENV || 'work'}`)
+      env: resolve(cwd(), `src/env/${process.env.SF_ENV || 'work'}`),
+      '@': resolve(cwd(), 'src')
     }
   },
   module: {
@@ -124,15 +124,6 @@ const config: Configuration = {
       typescript: {
         configFile: resolve(cwd(), 'tsconfig.json')
       }
-    }),
-    // ESlint的验证
-    // 使用eslint来检查错误，然后爆出来，警告的错误
-    new EslintPlugin({
-      extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
-      exclude: 'node_modules',
-      fix: true,
-      emitWarning: false,
-      threads: true
     }),
     new HtmlWebpackPlugin({
       template: resolve(cwd(), 'public/index.html')

@@ -3,6 +3,7 @@ import webpackMerge from 'webpack-merge'
 import FileManagerWebpackPlugin from 'filemanager-webpack-plugin'
 import { resolve } from 'path'
 import { cwd } from 'process'
+import EslintPlugin from 'eslint-webpack-plugin'
 import baseConfig from './webpack.base'
 
 export default webpackMerge(baseConfig, {
@@ -30,6 +31,13 @@ export default webpackMerge(baseConfig, {
           delete: [resolve(cwd(), 'dist/js/*.map')]
         }
       }
+    }),
+    new EslintPlugin({
+      extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
+      exclude: 'node_modules',
+      fix: true,
+      emitWarning: true,
+      threads: true
     })
   ]
   // devtool: 'hidden-source-map' // 最适合生产环境的source-map
