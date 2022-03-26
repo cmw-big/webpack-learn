@@ -1,41 +1,27 @@
-import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useState } from 'react'
 import { AContext } from './context'
 import ErrorBoundary from './errorBoundary'
 
 const A = lazy(() => import('./components/A'))
 
-// 这个上下文，赋值
-
 export default function App() {
-  // react会内部缓存State的状态，所以这里的通过SetCount改变的值，不会重新继续初始化。
-  const [count, setCount] = useState(0)
-  const h1Ref = useRef<HTMLHeadingElement>(null)
-  const divRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    console.log('h1Ref', h1Ref.current, count)
-    console.log('divRef', divRef.current, count)
-
-    return () => {
-      console.log('清除')
-    }
-  }, [count])
+  const [a, setA] = useState(1)
+  const handleClick = useCallback(() => {
+    setA(a + 1)
+    console.log('a', '我是a')
+  }, [a])
 
   return (
     <ErrorBoundary>
-      <AContext.Provider value={count}>
+      <AContext.Provider value={1}>
         <Suspense fallback={<h1>我在加载</h1>}>
-          <A ref={h1Ref} />
+          <A />
         </Suspense>
         <div id="parent">
-          <div
-            ref={divRef}
-            id="child"
-            onClick={() => {
-              setCount(count + 1)
-            }}
-          >
+          <div id="child" onClick={handleClick}>
             儿子
           </div>
+          <div>{a}</div>
         </div>
       </AContext.Provider>
     </ErrorBoundary>

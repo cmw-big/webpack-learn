@@ -5,7 +5,6 @@ export default function useTimer(count = 60, duration = 1000) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (time <= 0 && timer) {
-        console.log(timer, 'timer')
         clearTimeout(timer)
         return
       }
@@ -15,7 +14,3 @@ export default function useTimer(count = 60, duration = 1000) {
   }, [time, duration])
   return time
 }
-const a: NodeJS.Timeout = setTimeout(() => {
-  console.log('a')
-})
-console.log(a)
