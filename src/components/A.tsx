@@ -1,17 +1,30 @@
-import { ForwardedRef, forwardRef, useContext } from 'react'
-import { AContext } from '../context'
-import useTimer from '../hooks/useTimer'
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  useCallback,
+  useState
+} from 'react'
+import { Link } from 'react-router-dom'
+import { Transition } from 'react-transition-group'
 
-function A(props: any, ref: ForwardedRef<HTMLHeadingElement>) {
-  // 得到当前最近的上下文组件提供的值。
-  const count = useContext(AContext)
-  const time = useTimer(3, 1000)
+const A: ForwardRefRenderFunction<HTMLHeadingElement> = (props, ref) => {
+  const [inProp, setInProp] = useState(false)
+  const handleShow = useCallback(() => {
+    setInProp(true)
+  }, [])
+
   return (
     <>
-      <h1 ref={ref}>time:{time}</h1>
-      <button type="button">改变title</button>
+      <Transition mountOnEnter in={inProp} timeout={500}>
+        {state => <div>{state}</div>}
+      </Transition>
+      <Link to="/a" />
+      <h1 ref={ref}>time:{}</h1>
+      <button id="btn" type="button" onClick={handleShow}>
+        show
+      </button>
     </>
   )
 }
 
-export default forwardRef<HTMLHeadingElement, any>(A)
+export default forwardRef<HTMLHeadingElement>(A)
