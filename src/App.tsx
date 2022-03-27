@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { NavLink, Outlet, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes } from 'react-router-dom'
 
 import ErrorBoundary from './errorBoundary'
 
@@ -17,7 +17,6 @@ export default function App() {
             return {}
           }}
           className={isActive => {
-            console.log(isActive, 'className')
             return undefined
           }}
           to="/edit"
@@ -56,7 +55,7 @@ export default function App() {
             />
           </Route>
           <Route
-            path="detail"
+            path="detail/*"
             element={
               <Suspense fallback={<h1>loading......</h1>}>
                 <Detail />

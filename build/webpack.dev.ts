@@ -14,6 +14,7 @@ const devServer: DevServerConfiguration = {
     // 告诉服务器在哪个 URL 上提供 static.directory 的内容。
     // publicPath: '/' // 默认是和output.publicPath一样的。
   },
+  historyApiFallback: true, // 当匹配不到对应的路由的时候，渲染index.html文件。
   port: 12356, // 开启的端口
   open: true, // 自动打开浏览器
   compress: true // 是否启用压缩（gzip compression）
