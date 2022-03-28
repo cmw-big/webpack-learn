@@ -1,38 +1,41 @@
 import { lazy, Suspense } from 'react'
-import { NavLink, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes, Navigate, useRoutes } from 'react-router-dom'
 
 import ErrorBoundary from './errorBoundary'
+import useTimer from './hooks/useTimer'
 
 const Edit = lazy(() => import('@/page/edit'))
 const Detail = lazy(() => import('@/page/detail'))
 const EditItem = lazy(() => import('@/page/editItem'))
 // 这个上下文，赋值
 export default function App() {
+  const time = useTimer(60, 1000)
+
   return (
     <ErrorBoundary>
       <h1>我是App</h1>
+      <h2>{time}</h2>
+      {/* ui导航 */}
       <nav>
+        <NavLink to="/edit">
+          <h1>edit</h1>
+        </NavLink>
         <NavLink
           style={({ isActive }) => {
             return {}
           }}
-          className={isActive => {
-            return undefined
+          to={{
+            pathname: '/detail'
           }}
-          to="/edit"
         >
-          <h1>edit</h1>
-        </NavLink>
-        <NavLink to="/detail">
           <h1>detail</h1>
         </NavLink>
         <NavLink to="/xxx">
           <h1>xxx</h1>
         </NavLink>
       </nav>
-
       <Routes>
-        <Route path="/">
+        <Route>
           <Route
             path="edit"
             element={
@@ -61,8 +64,13 @@ export default function App() {
                 <Detail />
               </Suspense>
             }
+          >
+            1324123
+          </Route>
+          <Route
+            path="*"
+            element={<Navigate to="detail" replace state={{ a: 1 }} />}
           />
-          <Route path="*" element={<h1>我啥也不匹配</h1>} />
         </Route>
       </Routes>
     </ErrorBoundary>

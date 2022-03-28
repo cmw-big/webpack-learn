@@ -4,7 +4,7 @@ import webpackMerge from 'webpack-merge'
 import EslintPlugin from 'eslint-webpack-plugin'
 import baseConfig from './webpack.base'
 
-// 开发服务器配置（其中扩展了webpack的Configuration接口，扩展了一个devServer属性，这样写的话就不会报错）
+// 开发服务器配置（其中interface扩展了webpack的Configuration接口，扩展了一个devServer属性，这样写的话就不会报错）
 const devServer: DevServerConfiguration = {
   // 该配置项允许配置从目录提供静态文件的选项（默认是 'public' 文件夹）。将其设置为 false 以禁用：
   // 主要是为了和一些服务器的配置一样。为了一些资源本地没有，但是线上有。这样配置这个就能在本地开发和线上都能正常访问了。
