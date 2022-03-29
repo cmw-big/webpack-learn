@@ -18,7 +18,7 @@ export default function useTimer(count = 60, duration = 1000) {
       setTime(n => n - 1)
     }, duration)
     return () => window.clearInterval(timer)
-  }, [])
+  }, [time, duration])
   return time
 }
 

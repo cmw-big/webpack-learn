@@ -1,4 +1,10 @@
-import { MouseEventHandler, type FC } from 'react'
+import {
+  memo,
+  MouseEventHandler,
+  useCallback,
+  useReducer,
+  type FC
+} from 'react'
 import {
   Link,
   Outlet,
@@ -14,12 +20,29 @@ const Edit: FC = () => {
   })
   const location = useLocation()
   const navigate = useNavigate()
-  const handleNavigateDetail: MouseEventHandler = () => {
+  const handleNavigateDetail: MouseEventHandler = useCallback(() => {
     navigate(`/detail${location.search}`)
+  }, [location, navigate])
+  function reducer(state: { count: number }, action: { type: string }) {
+    switch (action.type) {
+      case 'increment':
+        return { count: state.count + 1 }
+      case 'decrement':
+        return { count: state.count - 1 }
+      default:
+        throw new Error()
+    }
   }
+  const initialState = { count: 0 }
+  const [state, dispatch] = useReducer(reducer, initialState)
+  console.log(state)
+  const handleClick = useCallback(() => {
+    dispatch({ type: 'increment' })
+  }, [])
+
   return (
     <div>
-      <div>edit page</div>
+      <div onClick={handleClick}>edit page</div>
       <Link to="132">
         <h2>editItem</h2>
       </Link>
@@ -43,4 +66,4 @@ const Edit: FC = () => {
     </div>
   )
 }
-export default Edit
+export default memo(Edit)

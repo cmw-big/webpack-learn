@@ -31,7 +31,8 @@ module.exports = {
     'import/resolver': {
       // use a glob pattern
       typescript: {
-        directory: './packages/**/tsconfig.json'
+        alwaysTryTypes: true,
+        project: './tsconfig.json'
       }
     }
   },
@@ -60,6 +61,7 @@ module.exports = {
     'react/jsx-uses-react': 0, // 关闭强在JSX中使用React.createElement
     'react/function-component-definition': 0, // 关闭强制函数组件定义必须使用函数表达式
     'import/no-unresolved': 0, // 关闭强制导入模块不存在的报错
+    'default-param-last': 0 // 关闭默认参数必须放在最后一个参数的警告
   },
   overrides: [
     {

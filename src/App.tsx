@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { NavLink, Route, Routes, Navigate, useRoutes } from 'react-router-dom'
+import { NavLink, Route, Routes, Navigate } from 'react-router-dom'
 
 import ErrorBoundary from './errorBoundary'
 import useTimer from './hooks/useTimer'
@@ -9,7 +9,7 @@ const Detail = lazy(() => import('@/page/detail'))
 const EditItem = lazy(() => import('@/page/editItem'))
 // 这个上下文，赋值
 export default function App() {
-  const time = useTimer(60, 1000)
+  const time = useTimer(3, 1000)
 
   return (
     <ErrorBoundary>

@@ -6,7 +6,6 @@ const Detail: FC = () => {
   const h1Ref = useRef<HTMLHeadingElement>(null)
   const navigate = useNavigate()
   const location = useLocation()
-  console.log(location)
 
   return (
     <div>

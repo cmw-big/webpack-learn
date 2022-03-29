@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir":"./",
     "incremental": true /* Enable incremental compilation */,
     "target": "ESNEXT" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "jsx": "react-jsx" /* Specify what JSX code is generated. */,
