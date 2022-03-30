@@ -12,7 +12,10 @@ function getRandomString(len: number) {
   return Math.random().toString(36).substring(2, len).split('').join('.')
 }
 
-export function createStore(reducer: any, defaultState: any) {
+export function createStore<S, A extends Action>(
+  reducer: Reducer<S, A>,
+  defaultState: any
+) {
   const currentReducer = reducer
   let currentState = defaultState
   const listeners: any[] = []
