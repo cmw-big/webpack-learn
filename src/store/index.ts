@@ -17,7 +17,6 @@ const bindUserAction = bindActionCreators(
 const unListen = store.subscribe(() => {
   console.log(store.getState())
 })
-
 bindUserAction.createAddUserAction({ id: nanoid(), name: 'John', age: 30 })
 unListen()
 bindUserAction.createAddUserAction({ id: nanoid(), name: 'John', age: 30 })

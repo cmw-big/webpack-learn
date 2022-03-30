@@ -10,3 +10,7 @@ export type Reducer<S = any, A extends Action = AnyAction> = (
   state: S | undefined,
   action: A
 ) => S
+
+export interface Dispatch<A extends Action = AnyAction> {
+  <T extends A>(action: T): T
+}
