@@ -39,7 +39,7 @@ module.exports = {
   rules: {
     'no-console': [1, { allow: ['warn', 'error'] }], // 使用console除了规定的都警告
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
-    'no-unused-vars': 1, // 有声明后未被使用的变量警告
+    'no-unused-vars': 0, // 有声明后未被使用的变量警告
     'react/jsx-filename-extension': [
       1,
       { extensions: ['.js', '.jsx', 'ts', 'tsx'] }
