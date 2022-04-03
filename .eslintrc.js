@@ -62,7 +62,15 @@ module.exports = {
     'react/function-component-definition': 0, // 关闭强制函数组件定义必须使用函数表达式
     'import/no-unresolved': 0, // 关闭强制导入模块不存在的报错
     'default-param-last': 0, // 关闭默认参数必须放在最后一个参数的警告
-    "no-restricted-syntax":0, // 关闭for of循环警告
+    'no-restricted-syntax': 0, // 关闭for of循环警告
+    'no-unused-vars': 0, // 关闭未使用的变量警告
+    'no-redeclare': 0, // 关闭重复声明变量警告
+    'func-names': 0, // 关闭函数表达式必须有名字警告
+    'no-void': 0, // 关闭void警告
+    'default-case': 0, // 关闭switch语句默认情况警告
+    'no-use-before-define': 0, // 关闭变量定义前使用警告
+    'import/export': 0, // 关闭导入导出警告
+    'no-plusplus': 0 // 关闭++ --警告
   },
   overrides: [
     {
