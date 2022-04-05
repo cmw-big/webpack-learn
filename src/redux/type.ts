@@ -36,7 +36,6 @@ export type PreloadedState<S> = Required<S> extends EmptyObject
         ? S[K]
         : PreloadedState<S[K]>
     }
-
 /**
  * 创建action的函数接口
  * A是Action创建函数的返回类型

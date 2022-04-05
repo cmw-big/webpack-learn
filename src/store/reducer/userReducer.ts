@@ -1,12 +1,14 @@
 import { nanoid } from 'nanoid'
 import { Reducer } from 'redux'
-import { UPDATE_USER } from '../actions/usersAction'
 import {
   ADD_USER,
   createAddUserAction,
   createDeleteUserAction,
   createUpdateUserAction,
-  DELETE_USER
+  DELETE_USER,
+  FETCH_USER,
+  SET_LOADING,
+  UPDATE_USER
 } from '@/store/actions/usersAction'
 
 export interface UserState {
@@ -15,10 +17,13 @@ export interface UserState {
   age: number
 }
 
-const initialUserState: UserState[] = [
-  { id: nanoid(), name: 'John', age: 30 },
-  { id: nanoid(), name: 'Tom', age: 12 }
-]
+const initialUserState = {
+  userList: [
+    { id: nanoid(), name: 'John', age: 30 },
+    { id: nanoid(), name: 'Tom', age: 12 }
+  ] as UserState[],
+  loading: false
+}
 
 export type UserAction =
   | ReturnType<typeof createAddUserAction>
@@ -31,20 +36,35 @@ export type UserAction =
  * @param action 触发user的类型
  * @returns user的状态
  */
-const userReducer: Reducer<UserState[]> = (
+const userReducer: Reducer<typeof initialUserState> = (
   state = initialUserState,
   action
 ) => {
   switch (action.type) {
     case ADD_USER:
-      return [...state, action.payload]
+      return { ...state, userList: [...state.userList, action.payload] }
     case DELETE_USER:
-      return state.filter(user => user.id !== action.payload)
+      return {
+        ...state,
+        userList: state.userList.filter(user => user.id !== action.payload)
+      }
     case UPDATE_USER:
-      return state.map(user => {
-        const { payload } = action
-        return user.id === payload.id ? { ...user, ...payload } : { ...user }
-      })
+      return {
+        ...state,
+        userList: state.userList.map(user => {
+          const { payload } = action
+          return user.id === payload.id ? { ...user, ...payload } : { ...user }
+        })
+      }
+    case SET_LOADING:
+      return {
+        userList: [...state.userList],
+        loading: action.payload.loading
+      }
+    case FETCH_USER:
+      return {
+        ...state
+      }
     default:
       return state
   }

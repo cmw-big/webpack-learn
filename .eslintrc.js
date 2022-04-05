@@ -70,7 +70,8 @@ module.exports = {
     'default-case': 0, // 关闭switch语句默认情况警告
     'no-use-before-define': 0, // 关闭变量定义前使用警告
     'import/export': 0, // 关闭导入导出警告
-    'no-plusplus': 0 // 关闭++ --警告
+    'no-plusplus': 0, // 关闭++ --警告
+    'no-shadow': 0 // 关闭变量声明时使用已声明的变量警告
   },
   overrides: [
     {
