@@ -17,7 +17,10 @@ const devServer: DevServerConfiguration = {
   historyApiFallback: true, // 当匹配不到对应的路由的时候，渲染index.html文件。
   port: 12356, // 开启的端口
   open: true, // 自动打开浏览器
-  compress: true // 是否启用压缩（gzip compression）
+  compress: true, // 是否启用压缩（gzip compression）
+  proxy: {
+    '/api': { target: 'http://api.duyiedu.com', changeOrigin: true }
+  }
 }
 
 export default webpackMerge(baseConfig, {

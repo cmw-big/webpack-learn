@@ -1,8 +1,4 @@
 import { User } from '@/store/type'
-import { nanoid } from 'nanoid'
-import { Action, AnyAction, Dispatch } from 'redux'
-import { ThunkAction } from 'redux-thunk'
-import { type UserState } from '../reducer/userReducer'
 
 export const ADD_USER = Symbol('ADD_USER')
 export const DELETE_USER = Symbol('DELETE_USER')
@@ -36,24 +32,3 @@ export const createFetchUserAction = (
   type: FETCH_USER,
   payload
 })
-
-// fetchUsers action，可以带有副作用
-// export function fetchUsers(): ThunkAction<
-//   Promise<void>,
-//   UserState,
-//   any,
-//   AnyAction
-// > {
-//   // 由于thunk的存在，允许action是一个带有副作用的函数
-//   return async function (dispatch: Dispatch) {
-//     dispatch(createSetLoadingAction(true)) // 正在加载
-//     // const users = await getAllStudents()
-//     const action = createAddUserAction({
-//       id: nanoid(),
-//       name: 'test',
-//       age: 12
-//     })
-//     dispatch(action)
-//     dispatch(createSetLoadingAction(false))
-//   }
-// }

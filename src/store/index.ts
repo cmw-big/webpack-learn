@@ -4,12 +4,9 @@ import rootReducer from '@/store/reducer'
 import logger from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import { nanoid } from 'nanoid'
-import {
-  createAddUserAction,
-  createFetchUserAction,
-  createUpdateUserAction
-} from './actions/usersAction'
-import mySaga from './sagas/mySaga'
+import { createFetchUserAction } from './actions/usersAction'
+import mySaga from './sagas'
+import { createGetAllStudentsAction } from './actions/students'
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer, applyMiddleware(sagaMiddleware, logger))
@@ -22,11 +19,6 @@ store.dispatch(
     name: 'test'
   })
 )
-store.dispatch(
-  createAddUserAction({
-    id: '1',
-    name: 'test',
-    age: 134
-  })
-)
-store.dispatch(createUpdateUserAction('1', { name: '搜索树' }))
+store.dispatch(createGetAllStudentsAction())
+export type storeType = ReturnType<typeof store.getState>
+export default store
