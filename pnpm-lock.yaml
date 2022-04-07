@@ -53,6 +53,7 @@ specifiers:
   redux-logger: ^3.0.6
   redux-saga: ^1.1.3
   redux-thunk: ^2.4.1
+  reselect: ^4.1.5
   sass: ^1.49.9
   sass-loader: ^12.6.0
   source-map-loader: ^3.0.1
@@ -85,6 +86,7 @@ dependencies:
   redux-logger: 3.0.6
   redux-saga: 1.1.3
   redux-thunk: 2.4.1_redux@4.1.2
+  reselect: 4.1.5
   tslib: 2.3.1
 
 devDependencies:
@@ -6462,6 +6464,10 @@ packages:
   /requires-port/1.0.0:
     resolution: {integrity: sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=}
     dev: true
+
+  /reselect/4.1.5:
+    resolution: {integrity: sha512-uVdlz8J7OO+ASpBYoz1Zypgx0KasCY20H+N8JD13oUMtPvSHQuscrHop4KbXrbsBcdB9Ds7lVK7eRkBIfO43vQ==}
+    dev: false
 
   /resolve-cwd/3.0.0:
     resolution: {integrity: sha512-OrZaX2Mb+rJCpH/6CpSqt9xFVpN++x01XnN2ie9g6P5/3xelLAkXWVADpdz1IHD/KFfEXyE6V0U01OQ3UO2rEg==}

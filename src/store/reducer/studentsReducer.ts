@@ -10,6 +10,7 @@ const initialStudentsState = {
   loading: false,
   fetchError: false
 }
+export type StudentState = typeof initialStudentsState
 
 const studentsReducer: Reducer<typeof initialStudentsState> = function (
   state = initialStudentsState,
@@ -21,6 +22,7 @@ const studentsReducer: Reducer<typeof initialStudentsState> = function (
     case QUERY_STUDENT_LOADING:
       return { ...state, loading: action.payload }
     default:
+      console.log('我是state')
       return state
   }
 }
