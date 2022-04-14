@@ -10,6 +10,7 @@ import { createSelector } from 'reselect'
 import { nanoid } from 'nanoid'
 import { createAddUserAction } from '@/store/actions/usersAction'
 
+const test = 1
 const Edit = lazy(() => import('@/page/edit'))
 const Detail = lazy(() => import('@/page/detail'))
 const EditItem = lazy(() => import('@/page/editItem'))
