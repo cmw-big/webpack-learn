@@ -1,13 +1,7 @@
 import { lazy, Suspense, useCallback, useMemo } from 'react'
-import {
-  createSelectorHook,
-  shallowEqual,
-  useDispatch,
-  useSelector
-} from 'react-redux'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom'
 
-import { StudentState } from '@/store/reducer/studentsReducer'
 import useTimer from '@/hooks/useTimer'
 import ErrorBoundary from '@/errorBoundary'
 import { type StoreType } from '@/store'
@@ -19,6 +13,8 @@ import { createAddUserAction } from '@/store/actions/usersAction'
 const Edit = lazy(() => import('@/page/edit'))
 const Detail = lazy(() => import('@/page/detail'))
 const EditItem = lazy(() => import('@/page/editItem'))
+
+const a = 1
 
 const studentListSelector = (store: StoreType) => {
   console.log('我执行了')
