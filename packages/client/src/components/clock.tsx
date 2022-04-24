@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid'
 import { FC } from 'react'
 
 interface IProps {
