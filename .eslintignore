@@ -4,3 +4,5 @@ dist
 public
 .eslintrc.js
 global.d.ts
+
+*.json
