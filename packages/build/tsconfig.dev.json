@@ -1,9 +1,10 @@
 {
-  "exclude": ["../tsconfig.setting.dev.json"],
+  "extends": "../tsconfig.setting.dev.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "target": "ESNEXT",
   },
   "include": ["src"]
 }

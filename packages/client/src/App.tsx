@@ -6,7 +6,6 @@ import ErrorBoundary from '@/errorBoundary'
 const Edit = lazy(() => import('@/page/edit'))
 const Detail = lazy(() => import('@/page/detail'))
 const EditItem = lazy(() => import('@/page/editItem'))
-
 // 这个上下文，赋值
 export default function App() {
   return (
