@@ -10,5 +10,10 @@
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-angular": "^16.2.3",
     "lint-staged": "^12.4.0"
+  },
+  "lint-staged": {
+    "packages/**/*.{js,ts,jsx,tsx}": [
+      "eslint --fix --cache"
+    ]
   }
 }
