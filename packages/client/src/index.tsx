@@ -1,9 +1,9 @@
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
-import store from '@/store'
 import { Provider } from 'react-redux'
-import { StrictMode } from 'react'
+import store from '@/store'
 import App from './App'
+import './index.scss'
 
 render(
   <StrictMode>

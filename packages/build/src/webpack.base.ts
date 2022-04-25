@@ -1,16 +1,37 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'
-import { Configuration, DefinePlugin } from 'webpack'
+import { Configuration, DefinePlugin, sources } from 'webpack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type { LoaderOptions } from 'mini-css-extract-plugin'
 import { cwd } from 'process'
+import { readdirSync, statSync } from 'fs'
+import glob from 'glob'
+
+const packagesPath = resolve(cwd(), 'packages')
+const applicationPathList = readdirSync(packagesPath)
+
+const entry = applicationPathList.reduce((acc, applicationPath) => {
+  const applicationEntryDir = resolve(packagesPath, applicationPath)
+  if (statSync(applicationEntryDir).isDirectory()) {
+    glob('../../../**/src/*.ts?(x)', (err, files) => {
+      if (err) {
+        return
+      }
+      console.log(files, '====')
+
+      acc[applicationPath] = resolve(applicationEntryDir, 'src', 'index.tsx')
+    })
+  }
+  return acc
+}, {} as Record<string, string>)
+console.log(entry)
 
 // webpack全局配置
 const config: Configuration = {
   context: resolve(cwd()), // 入口的基本目录，是绝对路径。入口基于这个找
-  entry: { app: resolve(cwd(), 'src/index.tsx') },
+  entry: {},
   output: {
     path: resolve(cwd(), 'dist'),
     filename: 'js/[name].[contenthash:8].js',
@@ -108,7 +129,12 @@ const config: Configuration = {
               // publicPath: '/assets', // 为css中的外部图像，文件等资源加上公共前缀。
             } as LoaderOptions
           },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
           'sass-loader'
         ]
       },
@@ -135,7 +161,24 @@ const config: Configuration = {
     // 定义全局变量,将代码中进行文本的替换
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
+    }),
+    {
+      apply(compiler) {
+        compiler.hooks.emit.tap('addPl', compilation => {
+          Object.entries(compilation.assets).forEach(([pathname, source]) => {
+            const size = source.size()
+
+            if (size <= 1) {
+              compilation.updateAsset(pathname, source => {
+                return new sources.RawSource(
+                  `/* 娃娃飒飒大苏打*/${source.source()}`
+                )
+              })
+            }
+          })
+        })
+      }
+    }
     // new BundleAnalyzerPlugin({}),
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "exclude": ["../tsconfig.setting.dev.json"],
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"]
+}
