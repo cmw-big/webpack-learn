@@ -22,7 +22,6 @@ const studentsReducer: Reducer<typeof initialStudentsState> = function (
     case QUERY_STUDENT_LOADING:
       return { ...state, loading: action.payload }
     default:
-      console.log(`未知的${action.type}`)
       return state
   }
 }

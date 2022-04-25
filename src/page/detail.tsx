@@ -1,11 +1,9 @@
 import { FC, useRef } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
-import A from '@/components/A'
 
 const Detail: FC = () => {
   const h1Ref = useRef<HTMLHeadingElement>(null)
   const navigate = useNavigate()
-  const location = useLocation()
 
   return (
     <div>
@@ -29,7 +27,6 @@ const Detail: FC = () => {
         <Route index element={<h1>我是detail默认的内容</h1>} />
         <Route index element={<h1>我是detail默认的内容111</h1>} />
         {/* index写入多个的话，只会有第一个生效 */}
-        <Route path=":id" element={<A ref={h1Ref} />} />
       </Routes>
     </div>
   )
