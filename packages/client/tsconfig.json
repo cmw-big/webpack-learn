@@ -4,7 +4,8 @@
     "composite": true,
     "outDir": "dist",
     "rootDir": "src",
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "module": "ESNEXT"
   },
   "include": ["src"],
   "ts-node": {

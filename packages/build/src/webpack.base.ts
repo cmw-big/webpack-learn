@@ -6,32 +6,13 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import type { LoaderOptions } from 'mini-css-extract-plugin'
 import { cwd } from 'process'
-import { readdirSync, statSync } from 'fs'
 import glob from 'glob'
 
-const packagesPath = resolve(cwd(), 'packages')
-const applicationPathList = readdirSync(packagesPath)
+const entry = glob.sync('./src/index.ts?(x)')[0]
 
-const entry = applicationPathList.reduce((acc, applicationPath) => {
-  const applicationEntryDir = resolve(packagesPath, applicationPath)
-  if (statSync(applicationEntryDir).isDirectory()) {
-    glob('../../../**/src/*.ts?(x)', (err, files) => {
-      if (err) {
-        return
-      }
-      console.log(files, '====')
-
-      acc[applicationPath] = resolve(applicationEntryDir, 'src', 'index.tsx')
-    })
-  }
-  return acc
-}, {} as Record<string, string>)
-console.log(entry)
-
-// webpack全局配置
 const config: Configuration = {
   context: resolve(cwd()), // 入口的基本目录，是绝对路径。入口基于这个找
-  entry: {},
+  entry,
   output: {
     path: resolve(cwd(), 'dist'),
     filename: 'js/[name].[contenthash:8].js',

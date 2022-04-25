@@ -1,12 +1,9 @@
 {
-  "name": "webpack",
+  "name": "client",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config ../build/src/webpack.config.ts",
     "build:work": "cross-env SF_ENV=work pnpm build",

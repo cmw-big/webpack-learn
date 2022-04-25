@@ -5,7 +5,7 @@
     "jsx": "react-jsx" /* Specify what JSX code is generated. */,
     "experimentalDecorators": true /* Enable experimental support for TC39 stage 2 draft decorators. */,
     "emitDecoratorMetadata": true /* Emit design-type metadata for decorated declarations in source files. */,
-    "module": "ESNEXT" /* Specify what module code is generated. */,
+    "module": "esnext" /* Specify what module code is generated. */,
     "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
     "allowJs": true /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */,
     "sourceMap": true /* Create source map files for emitted JavaScript files. */,
@@ -24,15 +24,6 @@
     }
   },
   "exclude": [
-    "node_modules",
-    "dist",
-    "babel.config.js",
     "commitlint.config.js"
-  ],
-  // 为webpack.config.ts的执行配置环境。只能在commonjs中进行执行
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  ]
 }

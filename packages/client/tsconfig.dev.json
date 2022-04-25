@@ -3,7 +3,13 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "module": "ESNEXT"
   },
-  "include": ["src"]
+  "include": ["src"], 
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
