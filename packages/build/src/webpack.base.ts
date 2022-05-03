@@ -26,6 +26,13 @@ const config: Configuration = {
       '@': resolve(cwd(), 'src')
     }
   },
+  // 跟编译有关，和开发的没什么关系。
+  watch: true,
+  watchOptions: {
+    ignored: '**/node_modules', // 忽略node_modules目录下的文件
+    aggregateTimeout: 300, // 等文件变动后300ms内重新编译
+    poll: 1000 // 每秒询问文件变动 轮询，数字越大，越敏感
+  },
   module: {
     rules: [
       {
