@@ -4,7 +4,6 @@ import { Configuration, DefinePlugin, sources } from 'webpack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import type { LoaderOptions } from 'mini-css-extract-plugin'
 import { cwd } from 'process'
 import glob from 'glob'
 
@@ -83,7 +82,10 @@ const config: Configuration = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               // publicPath: '/assets', // 为css中的外部图像，文件等资源加上公共前缀。
-            } as LoaderOptions
+            }
+          },
+          {
+            loader: 'postcss-loader'
           },
           'css-loader'
         ]
@@ -95,7 +97,7 @@ const config: Configuration = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               // publicPath: '/assets', // 为css中的外部图像，文件等资源加上公共前缀。
-            } as LoaderOptions
+            }
           },
           'css-loader',
           'less-loader'
@@ -108,7 +110,7 @@ const config: Configuration = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               // publicPath: '/assets', // 为css中的外部图像，文件等资源加上公共前缀。
-            } as LoaderOptions
+            }
           },
           {
             loader: 'css-loader',

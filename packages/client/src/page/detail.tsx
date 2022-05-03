@@ -1,8 +1,7 @@
-import { FC, useRef } from 'react'
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { type FC } from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 
 const Detail: FC = () => {
-  const h1Ref = useRef<HTMLHeadingElement>(null)
   const navigate = useNavigate()
 
   return (
@@ -25,7 +24,6 @@ const Detail: FC = () => {
         />
         {/* index的优先级要高一点 */}
         <Route index element={<h1>我是detail默认的内容</h1>} />
-        {/* index写入多个的话，只会有第一个生效 */}
       </Routes>
     </div>
   )
