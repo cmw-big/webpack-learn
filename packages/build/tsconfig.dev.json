@@ -6,5 +6,5 @@
     "rootDir": "src",
     "target": "ESNEXT",
   },
-  "include": ["src"]
+  "exclude": ["babel.config.js","node_modules"],
 }

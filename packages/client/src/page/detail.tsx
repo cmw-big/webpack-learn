@@ -1,5 +1,6 @@
 import { type FC } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
+import VirtualizedList from '@/components/virtualized-list'
 
 const Detail: FC = () => {
   const navigate = useNavigate()
@@ -23,7 +24,14 @@ const Detail: FC = () => {
           }
         />
         {/* index的优先级要高一点 */}
-        <Route index element={<h1>我是detail默认的内容</h1>} />
+        <Route
+          index
+          element={
+            <div>
+              <VirtualizedList />
+            </div>
+          }
+        />
       </Routes>
     </div>
   )

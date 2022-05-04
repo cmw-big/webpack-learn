@@ -5,7 +5,7 @@
     "rootDir": "src",
     "baseUrl": "./"
   },
-  "include": ["src"],
+  "exclude": ["babel.config.js","node_modules"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
