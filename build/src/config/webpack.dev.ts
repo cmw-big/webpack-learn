@@ -2,6 +2,7 @@ import { resolve } from 'path'
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
 import webpackMerge from 'webpack-merge'
 import EslintPlugin from 'eslint-webpack-plugin'
+import { randomInt } from 'crypto'
 import baseConfig from './webpack.base'
 
 // 开发服务器配置（其中interface扩展了webpack的Configuration接口，扩展了一个devServer属性，这样写的话就不会报错）
@@ -15,7 +16,7 @@ const devServer: DevServerConfiguration = {
     // publicPath: '/' // 默认是和output.publicPath一样的。
   },
   historyApiFallback: true, // 当匹配不到对应的路由的时候，渲染index.html文件。
-  port: 12356, // 开启的端口
+  port: randomInt(62000), // 开启的端口
   open: true, // 自动打开浏览器
   compress: true, // 是否启用压缩（gzip compression）
   proxy: {

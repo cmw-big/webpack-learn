@@ -69,15 +69,15 @@ const VirtualizedList: FC<VirtualizedListProps> = props => {
    * 计算渲染的元素个数,并进行设置渲染的数据
    */
   useEffect(() => {
-    setVisibleCount(
-      Math.ceil((scrollWrapDom || document.body).clientHeight / height) +
-        bufferSize
-    )
-    setIndexInfo({
-      startIndex,
-      endIndex: startIndex + visibleCount
-    })
-    updateVisibleData()
+    // setVisibleCount(
+    //   Math.ceil((scrollWrapDom || document.body).clientHeight / height) +
+    //     bufferSize
+    // )
+    // setIndexInfo({
+    //   startIndex,
+    //   endIndex: startIndex + visibleCount
+    // })
+    // updateVisibleData()
   }, [scrollWrapDom, startIndex, updateVisibleData, visibleCount])
 
   // 更新某一个信息

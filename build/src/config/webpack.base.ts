@@ -1,19 +1,21 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { resolve } from 'path'
-import { Configuration, DefinePlugin, sources } from 'webpack'
+import { Configuration, DefinePlugin } from 'webpack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { cwd } from 'process'
 import glob from 'glob'
+import CopyPlugin from 'copy-webpack-plugin'
 
 const entry = glob.sync('./src/index.ts?(x)')[0]
+const outputPath = resolve(cwd(), 'dist')
 
 const config: Configuration = {
   context: resolve(cwd()), // 入口的基本目录，是绝对路径。入口基于这个找
   entry,
   output: {
-    path: resolve(cwd(), 'dist'),
+    path: outputPath,
     filename: 'js/[name].[contenthash:8].js',
     publicPath: '/', // 给所有的输出的添加一个公共前缀。一般是配置线上的文件路径。我这里添加了一个公共路径是/的。如果不写的话。可能刷新页面之后，html中js的相对路径就是错误的了。
     assetModuleFilename: 'images/[name].[contenthash:8][ext][query]' // 模块输出的文件名, 图片或者文件等下的路径
@@ -91,10 +93,8 @@ const config: Configuration = {
               // publicPath: '/assets', // 为css中的外部图像，文件等资源加上公共前缀。
             }
           },
-          {
-            loader: 'postcss-loader'
-          },
-          'css-loader'
+          'css-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -107,7 +107,8 @@ const config: Configuration = {
             }
           },
           'css-loader',
-          'less-loader'
+          'less-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -125,7 +126,8 @@ const config: Configuration = {
               modules: true
             }
           },
-          'sass-loader'
+          'sass-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -152,23 +154,15 @@ const config: Configuration = {
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
-    {
-      apply(compiler) {
-        compiler.hooks.emit.tap('addPl', compilation => {
-          Object.entries(compilation.assets).forEach(([pathname, source]) => {
-            const size = source.size()
-
-            if (size <= 1) {
-              compilation.updateAsset(pathname, source => {
-                return new sources.RawSource(
-                  `/* 娃娃飒飒大苏打*/${source.source()}`
-                )
-              })
-            }
-          })
-        })
-      }
-    }
+    // 复制静态内容
+    new CopyPlugin({
+      patterns: [
+        {
+          from: resolve(cwd(), 'static'),
+          to: resolve(cwd(), resolve(outputPath, 'static'))
+        }
+      ]
+    })
     // new BundleAnalyzerPlugin({}),
   ]
 }

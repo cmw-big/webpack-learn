@@ -15,11 +15,6 @@ const VirtualizeItem: ForwardRefRenderFunction<HTMLDivElement, ItemProps> = (
 ) => {
   const { index, cachePosition } = props
   const [node, setNode] = useState<HTMLElement | null>(null)
-  useEffect(() => {
-    if (node) {
-      cachePosition(node, index)
-    }
-  }, [cachePosition, index, node])
 
   return (
     <div
@@ -28,7 +23,7 @@ const VirtualizeItem: ForwardRefRenderFunction<HTMLDivElement, ItemProps> = (
         setNode(element)
       }}
     >
-      <p>#${index} eligendi voluptatem quisquam</p>
+      <p>#${index} el是对的igendi voluptatem quisquam</p>
       <p>
         Modi autem fugiat maiores. Doloremque est sed quis qui nobis. Accusamus
         dolorem aspernatur sed rem.

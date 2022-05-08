@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.setting.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
@@ -7,10 +7,5 @@
     "baseUrl": "./",
     "module": "ESNEXT"
   },
-  "include": ["src"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  "include": ["src"]
 }

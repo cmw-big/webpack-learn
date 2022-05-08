@@ -6,3 +6,4 @@ public
 global.d.ts
 
 *.json
+postcss.config.js
