@@ -69,4 +69,3 @@ export default function App() {
     </ErrorBoundary>
   )
 }
-console.log('namesd')
