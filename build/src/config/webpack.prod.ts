@@ -13,13 +13,16 @@ export default webpackMerge(baseConfig, {
   },
   mode: 'production',
   plugins: [
-    // 针对source-map的设置，生成哪些map文件。并且后端是多少可以自己添加。在线上出问题的时候。可以进行排查。
+    // 针对source-map的设置，生成哪些map文件。并且地址是多少可以自己添加。在线上出问题的时候。可以进行排查。
     new SourceMapDevToolPlugin({
       filename: '[file].map',
       append: '\n//# sourceMappingURL=http://localhost:12345/sourcemap/[url]'
     }),
     new FileManagerWebpackPlugin({
       events: {
+        onStart: {
+          delete: [resolve(cwd(), 'sourcemap/*.map')]
+        },
         onEnd: {
           copy: [
             {
