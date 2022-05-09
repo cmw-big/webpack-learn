@@ -2,3 +2,9 @@
 . "$(dirname "$0")/_/husky.sh"
 
 pnpm exec lint-staged
+
+for file in ../packages/*; do
+    if test -d "$file"; then
+        pnpm exec tsc --noEmit
+    fi
+done

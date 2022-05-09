@@ -26,13 +26,12 @@ module.exports = {
   settings: {
     'import/parsers': {
       // 使用 TypeScript parser
-      '@typescript-eslint/parser': ['.ts', '.tsx']
+      '@typescript-eslint/parser': ['.ts', '.tsx', 'js', 'jsx', '.d.ts']
     },
     'import/resolver': {
       // use a glob pattern
       typescript: {
-        alwaysTryTypes: true,
-        project: './tsconfig.json'
+        alwaysTryTypes: true
       }
     }
   },
@@ -72,8 +71,8 @@ module.exports = {
     'import/export': 0, // 关闭导入导出警告
     'no-plusplus': 0, // 关闭++ --警告
     'no-shadow': 0, // 关闭变量声明时使用已声明的变量警告
-    "react/require-default-props": 0, // 关闭组件的props必须有defaultProps警告
-    "import/no-extraneous-dependencies":0, // 关闭不必要的依赖警告
+    'react/require-default-props': 0, // 关闭组件的props必须有defaultProps警告
+    'import/no-extraneous-dependencies': 0 // 关闭不必要的依赖警告
   },
   overrides: [
     {
