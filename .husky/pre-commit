@@ -2,7 +2,6 @@
 
 pnpm exec lint-staged
 for file in ../packages/*; do
-    echo 'text here'
     if test -d "$file"; then
         echo 'text here'
         pnpm exec tsc --noEmit
