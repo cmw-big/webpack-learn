@@ -4,5 +4,6 @@ dist
 public
 .eslintrc.js
 global.d.ts
-postcss.config.js
+
 *.json
+postcss.config.js

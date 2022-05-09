@@ -5,10 +5,10 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ../build/src/webpack.config.ts",
+    "build": "cross-env NODE_ENV=production ts-node ../../build/src/scripts/index.ts",
     "build:work": "cross-env SF_ENV=work pnpm build",
     "build:test": "cross-env SF_ENV=test pnpm build",
-    "start": "cross-env NODE_ENV=development webpack server --config ../build/src/webpack.config.ts",
+    "start": "cross-env NODE_ENV=development ts-node ../../build/src/scripts/index.ts",
     "start:work": "cross-env SF_ENV=work pnpm start"
   },
   "keywords": [
@@ -16,17 +16,16 @@
   ],
   "author": "chengmingwang",
   "license": "ISC",
-  "devDependencies": {
-    "cross-env": "^7.0.3",
-    "webpack-cli": "^4.9.2"
-  },
-  "dependencies": {
-    "common": "^1.0.0",
-    "nanoid": "^3.3.2"
-  },
   "lint-staged": {
     "src/**/*.{js,ts,jsx,tsx}": [
       "eslint --fix --cache"
     ]
+  },
+  "dependencies": {
+    "nanoid": "^3.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.2.2"
   }
 }

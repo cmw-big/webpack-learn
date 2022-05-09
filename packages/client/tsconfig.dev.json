@@ -1,5 +1,5 @@
 {
-  "exclude": ["../tsconfig.setting.dev.json"],
+  "extends": "../../tsconfig.dev.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",

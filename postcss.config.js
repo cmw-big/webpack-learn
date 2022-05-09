@@ -1,3 +1,8 @@
 module.exports = {
-  plugins: [require('tailwindcss'), require('autoprefixer')]
+  // eslint-disable-next-line global-require
+    plugins: [
+    require('postcss-import'),
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ]
 }
