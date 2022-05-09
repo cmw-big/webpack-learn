@@ -82,5 +82,8 @@
     "redux-saga": "^1.1.3",
     "redux-thunk": "^2.4.1",
     "reselect": "^4.1.5"
+  },
+  "scripts": {
+    "prepare": "husky install"
   }
 }
