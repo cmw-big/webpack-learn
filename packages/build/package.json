@@ -22,10 +22,12 @@
     "webpack": "^5.70.0"
   },
   "devDependencies": {
+    "@babel/runtime-corejs3": "^7.17.9",
     "@types/glob": "^7.2.0",
     "@types/node": "^17.0.26",
     "babel-loader": "^8.2.5",
     "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "eslint": "^8.12.0",
     "eslint-webpack-plugin": "^3.1.1",
@@ -36,14 +38,13 @@
     "less-loader": "^10.2.0",
     "lint-staged": "^12.4.0",
     "mini-css-extract-plugin": "^2.6.0",
-    "prettier": "^2.6.1",
+    "postcss": "^8.4.13",
+    "postcss-loader": "^6.2.1",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "source-map-loader": "^3.0.1",
     "ts-loader": "^9.2.8",
     "ts-node": "^10.7.0",
-    "tslib": "^2.3.1",
-    "typescript": "^4.6.3",
     "webpack-dev-server": "^4.8.1",
     "webpack-merge": "^5.8.0"
   }

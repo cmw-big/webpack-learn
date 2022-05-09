@@ -1,9 +1,14 @@
 {
-  "exclude": ["../tsconfig.setting.dev.json"],
+   "extends": "../tsconfig.setting.dev.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }

@@ -4,6 +4,14 @@ import webpackMerge from 'webpack-merge'
 import EslintPlugin from 'eslint-webpack-plugin'
 import baseConfig from './webpack.base'
 
+
+
+function randomNum(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+
+
 // 开发服务器配置（其中interface扩展了webpack的Configuration接口，扩展了一个devServer属性，这样写的话就不会报错）
 const devServer: DevServerConfiguration = {
   // 该配置项允许配置从目录提供静态文件的选项（默认是 'public' 文件夹）。将其设置为 false 以禁用：
@@ -15,7 +23,7 @@ const devServer: DevServerConfiguration = {
     // publicPath: '/' // 默认是和output.publicPath一样的。
   },
   historyApiFallback: true, // 当匹配不到对应的路由的时候，渲染index.html文件。
-  port: 12356, // 开启的端口
+  port: randomNum(2000,65535), // 开启的端口
   open: true, // 自动打开浏览器
   compress: true, // 是否启用压缩（gzip compression）
   proxy: {

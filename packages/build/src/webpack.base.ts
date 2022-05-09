@@ -91,10 +91,8 @@ const config: Configuration = {
               // publicPath: '/assets', // 为css中的外部图像，文件等资源加上公共前缀。
             }
           },
-          {
-            loader: 'postcss-loader'
-          },
-          'css-loader'
+          'css-loader',
+          'postcss-loader'
         ]
       },
       {
@@ -107,6 +105,7 @@ const config: Configuration = {
             }
           },
           'css-loader',
+          'postcss-loader',
           'less-loader'
         ]
       },
@@ -125,6 +124,7 @@ const config: Configuration = {
               modules: true
             }
           },
+          'postcss-loader',
           'sass-loader'
         ]
       },
