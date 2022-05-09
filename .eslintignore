@@ -7,3 +7,4 @@ global.d.ts
 
 *.json
 postcss.config.js
+**/tsconfig.tsbuildinfo
