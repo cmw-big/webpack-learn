@@ -1,12 +1,12 @@
 {
-  "extends": "../tsconfig.setting.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
     "outDir": "dist",
     "rootDir": "src"
   },
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "babel.config.js"],
+  "exclude": ["node_modules", "dist", "babel.config.js", "node_modules"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
