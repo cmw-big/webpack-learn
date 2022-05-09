@@ -12,5 +12,3 @@ module.exports = {
   },
   plugins: []
 }
-
-module.exports = require('../../tailwind.config.js')

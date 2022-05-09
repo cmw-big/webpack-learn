@@ -5,13 +5,9 @@ import EslintPlugin from 'eslint-webpack-plugin'
 import { randomInt } from 'crypto'
 import baseConfig from './webpack.base'
 
-
-
 function randomNum(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
-
-
 
 // 开发服务器配置（其中interface扩展了webpack的Configuration接口，扩展了一个devServer属性，这样写的话就不会报错）
 const devServer: DevServerConfiguration = {
