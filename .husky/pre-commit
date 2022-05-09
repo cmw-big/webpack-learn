@@ -2,4 +2,5 @@
 
 pnpm exec lint-staged
 
+# 执行类型检查脚本
 "./type-check.sh"
