@@ -6,6 +6,7 @@ for file in ./packages/*; do
         pnpm exec tsc --noEmit -p "$file"
     fi
 done
+
 for file in ./libs/*; do
     if test -d "$file"; then
         pnpm exec tsc --noEmit -p "$file"
