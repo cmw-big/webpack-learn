@@ -107,8 +107,8 @@ const config: Configuration = {
             }
           },
           'css-loader',
-          'less-loader',
-          'postcss-loader'
+          'postcss-loader',
+          'less-loader'
         ]
       },
       {
@@ -126,8 +126,8 @@ const config: Configuration = {
               modules: true
             }
           },
-          'sass-loader',
-          'postcss-loader'
+          'postcss-loader',
+          'sass-loader'
         ]
       },
       {

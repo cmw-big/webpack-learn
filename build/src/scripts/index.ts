@@ -6,6 +6,7 @@ import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 import config from '../config'
 
+console.log(process.cwd(), 'cwd===')
 const compiler = webpack(config)
 if (process.env.NODE_ENV === 'development') {
   const server = new WebpackDevServer(config.devServer, compiler)

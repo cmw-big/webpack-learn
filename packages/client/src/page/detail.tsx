@@ -1,13 +1,15 @@
 import { type FC } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import VirtualizedList from '@/components/virtualized-list'
+import { randomObject } from 'common'
+import VirtualizeItem from '@/components/virtualized-list/item'
 
 const Detail: FC = () => {
   const navigate = useNavigate()
 
   return (
     <div>
-      <div>detail page</div>
+      <div className="w-30 overflow-hidden">detail page</div>
       <button
         type="button"
         onClick={() => {
@@ -28,7 +30,9 @@ const Detail: FC = () => {
           index
           element={
             <div>
-              <VirtualizedList />
+              <VirtualizedList dataList={randomObject(100)}>
+                <VirtualizeItem />
+              </VirtualizedList>
             </div>
           }
         />

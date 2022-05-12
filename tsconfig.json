@@ -18,7 +18,7 @@
     "strict": true /* Enable all strict type-checking options. */,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "outDir": "dist",
+    "outDir": "dist"
   },
   "include": ["packages/**/src", "build", "global.d.ts"],
   "exclude": ["commitlint.config.js", "dist", "node_modules/**"],

@@ -8,3 +8,4 @@ global.d.ts
 *.json
 postcss.config.js
 **/tsconfig.tsbuildinfo
+**/tailwind.config.js
