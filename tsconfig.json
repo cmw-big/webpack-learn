@@ -22,6 +22,7 @@
   },
   "include": ["packages/**/src", "build", "global.d.ts"],
   "exclude": ["commitlint.config.js", "dist", "node_modules/**"],
+  "references": [{ "path": "./libs/common" }, { "path": "./packages/client" }],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
