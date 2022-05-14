@@ -25,7 +25,7 @@
   "references": [{ "path": "./libs/common" }, { "path": "./packages/client" }],
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "commonjs"
     }
   }
 }

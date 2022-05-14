@@ -4,7 +4,6 @@
 
 import {
   type CSSProperties,
-  forwardRef,
   useState,
   useEffect,
   useRef,
@@ -108,7 +107,7 @@ const VirtualizedList: FC<VirtualizedListProps> = props => {
         style={{ '--tw-translate-y': `${scrollRunwayEnd}px` } as CSSProperties}
         className="opacity-0 absolute w-1 h-1 duration-200 transform-gpu transition-transform transform"
       />
-      {visibleData.map(item => {
+      {visibleData.map((item, index) => {
         return (
           <div
             key={nanoid()}

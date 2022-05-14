@@ -19,7 +19,7 @@ module.exports = {
         // Babel 将检查你的所有代码，以便查找目标环境中缺失的功能，然后只把必须的 polyfill 包含进来。
         useBuiltIns: 'usage',
         corejs: '3.21', // 这个版本最好精确到次版本。有利于更新
-        debug: true,
+        debug: false,
         modules: false, // 不采取任何模块化的方式，是为了更好的tree-shaking
         shippedProposals: true // 将代码中提案的也进行转化
       }

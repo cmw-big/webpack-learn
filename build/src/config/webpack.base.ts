@@ -8,6 +8,7 @@ import { cwd } from 'process'
 import glob from 'glob'
 import CopyPlugin from 'copy-webpack-plugin'
 import { accessSync, constants } from 'fs'
+import EslintPlugin from 'eslint-webpack-plugin'
 
 const entry = glob.sync('./src/index.ts?(x)')[0]
 const outputPath = resolve(cwd(), 'dist')
@@ -28,13 +29,6 @@ const config: Configuration = {
       '@': resolve(cwd(), 'src')
     }
   },
-  // 跟编译有关，和开发的没什么关系。
-  // watch: true,
-  // watchOptions: {
-  //   ignored: '**/node_modules', // 忽略node_modules目录下的文件
-  //   aggregateTimeout: 300, // 等文件变动后300ms内重新编译
-  //   poll: 1000 // 每秒询问文件变动 轮询，数字越大，越敏感
-  // },
   module: {
     rules: [
       {
@@ -154,6 +148,13 @@ const config: Configuration = {
     // 定义全局变量,将代码中进行文本的替换
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+    new EslintPlugin({
+      extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
+      exclude: 'node_modules',
+      fix: true,
+      emitWarning: true,
+      threads: true
     })
     // new BundleAnalyzerPlugin({}),
   ]
