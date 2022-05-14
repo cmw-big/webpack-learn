@@ -1,7 +1,7 @@
 const path = require('path')
 
 const spacingList = {}
-for (let i = 0; i < 1000000; i++) {
+for (let i = 0; i < 100000; i++) {
   spacingList[i] = `${i}px`
 }
 const opacityList = {}
