@@ -2,8 +2,11 @@
   "name": "@mono/common",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "scripts": {},
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development ts-node ../../build/src/scripts/index.ts",
+    "build": "cross-env NODE_ENV=production ts-node ../../build/src/scripts/index.ts"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {

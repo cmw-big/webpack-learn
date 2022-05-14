@@ -7,6 +7,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { cwd } from 'process'
 import glob from 'glob'
 import CopyPlugin from 'copy-webpack-plugin'
+import { accessSync, constants } from 'fs'
 
 const entry = glob.sync('./src/index.ts?(x)')[0]
 const outputPath = resolve(cwd(), 'dist')
@@ -153,8 +154,15 @@ const config: Configuration = {
     // 定义全局变量,将代码中进行文本的替换
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    }),
-    // 复制静态内容
+    })
+    // new BundleAnalyzerPlugin({}),
+  ]
+}
+const staticPath = resolve(cwd(), 'static')
+
+try {
+  accessSync(staticPath, constants.R_OK)
+  config.plugins?.push(
     new CopyPlugin({
       patterns: [
         {
@@ -163,7 +171,10 @@ const config: Configuration = {
         }
       ]
     })
-    // new BundleAnalyzerPlugin({}),
-  ]
+  )
+} catch (error) {
+  // console.error('文件不存在', error)
 }
+// 复制静态内容
+
 export default config
