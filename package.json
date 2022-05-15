@@ -89,7 +89,7 @@
     "reselect": "^4.1.5"
   },
   "lint-staged": {
-    "packages/**/src/**/*.{ts,tsx,js,jsx}": [
+    "**/src/**/*.{ts,tsx,js,jsx}": [
       "eslint --fix"
     ]
   }
