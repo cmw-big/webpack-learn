@@ -3,12 +3,13 @@
  * TODO 编写脚本执行webpack打包，使用config里面的配置
  */
 
+import { execSync } from 'child_process'
 import webpack from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
-import chalk from 'chalk'
 import config from '../config'
 
 const { log } = console
+execSync('tsc -b')
 const compiler = webpack(config)
 if (process.env.NODE_ENV === 'development') {
   const server = new WebpackDevServer(config.devServer, compiler)
@@ -28,37 +29,12 @@ if (process.env.NODE_ENV === 'development') {
         log('err=>', err)
         return
       }
-      if (!stats?.hasErrors()) {
-        const statsStr = stats?.toString()
-        const assetsInfo = stats?.compilation.emittedAssets
-
-        const greenStrList = [
-          '[immutable]',
-          '[emitted]',
-          'successfully',
-          '[copied]',
-          ...(assetsInfo || [])
-        ]
-        const redStrList = ['[not cacheable]']
-        const yellowStrList = ['[code generated]', '[built]']
-        const allStrList = [greenStrList, redStrList, yellowStrList]
-        let newStr = statsStr
-        allStrList.forEach((strList, index) => {
-          let chalkColor = chalk.green
-          if (index === 1) {
-            chalkColor = chalk.red
-          } else if (index === 2) {
-            chalkColor = chalk.yellow
-          }
-          strList.forEach(str => {
-            newStr =
-              newStr?.replaceAll(str, value => {
-                return chalkColor(chalk.bold(value))
-              }) || ''
-          })
-        })
-        log(newStr)
-      }
+      log(
+        stats?.toString({
+          colors: true,
+          assetsSort: '!size'
+        }) || ''
+      )
     }
   )
 } else {
@@ -68,7 +44,7 @@ if (process.env.NODE_ENV === 'development') {
       return
     }
     if (stats?.hasErrors()) {
-      console.error('webpack stats hasErrors', stats.toString())
+      console.error('webpack stats hasErrors', stats.toString({ color: true }))
     }
   })
 }

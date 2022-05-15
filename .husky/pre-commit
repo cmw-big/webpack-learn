@@ -1,6 +1,7 @@
 #!/bin/sh
+PATH=$PATH:/usr/local/bin:/usr/local/sbin;
 
 pnpm exec lint-staged
 
 # 执行类型检查脚本
-"./type-check.sh"
+"./type-check"
