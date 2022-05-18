@@ -18,7 +18,9 @@
     "strict": true /* Enable all strict type-checking options. */,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "outDir": "dist"
+    "outDir": "dist",
+    "composite": true,
+    "emitDeclarationOnly": true // 只输出声明文件,不输出js文件。使用tsc生成声明文件，使用后babel转化ts文件
   },
   "include": ["packages/**/src", "build", "global.d.ts"],
   "exclude": ["commitlint.config.js", "dist", "node_modules/**"],
