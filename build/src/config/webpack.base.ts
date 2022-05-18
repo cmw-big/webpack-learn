@@ -4,6 +4,7 @@ import { Configuration, DefinePlugin } from 'webpack'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
 import { cwd } from 'process'
 import glob from 'glob'
 import CopyPlugin from 'copy-webpack-plugin'
@@ -18,7 +19,9 @@ const config: Configuration = {
   entry,
   output: {
     path: outputPath,
-    filename: 'js/[name].[contenthash:8].js',
+    filename: 'js/[name].[contenthash:8].js', // 一般是入口代码块的名字
+    // 一般是非入口代码块的名字。可能是分包产生，也可能是懒加载（动态加载）产生。import()语法加载模块
+    chunkFilename: 'js/[name].[contenthash:8].js',
     publicPath: '/', // 给所有的输出的添加一个公共前缀。一般是配置线上的文件路径。我这里添加了一个公共路径是/的。如果不写的话。可能刷新页面之后，html中js的相对路径就是错误的了。
     assetModuleFilename: 'images/[name].[contenthash:8][ext][query]' // 模块输出的文件名, 图片或者文件等下的路径
   },
@@ -36,18 +39,17 @@ const config: Configuration = {
     rules: [
       {
         test: /\.m?jsx?$/,
-        enforce: 'pre',
         use: [
           'source-map-loader',
           {
             loader: 'babel-loader',
             options: {
-              cacheDirectory: true,
-              exclude: [
-                // \\ for Windows, \/ for Mac OS and Linux
-                /node_modules[\\/]core-js/,
-                /node_modules[\\/]webpack[\\/]buildin/
-              ]
+              cacheDirectory: true
+              // exclude: [
+              //   // \\ for Windows, \/ for Mac OS and Linux
+              //   /node_modules[\\/]core-js/,
+              //   /node_modules[\\/]webpack[\\/]buildin/
+              // ]
             }
           }
         ],
@@ -130,9 +132,12 @@ const config: Configuration = {
       },
       {
         test: /\.(png|jpe?g|svg|gif|webp)/,
-        type: 'asset/resource'
+        type: 'asset'
       }
     ]
+  },
+  optimization: {
+    minimizer: [`...`, new CssMinimizerPlugin()]
   },
   plugins: [
     //   将ts的类型检查放入单独的进程。不然每次热更新编译一次的话。类型检查都会比较慢
@@ -141,10 +146,12 @@ const config: Configuration = {
         configFile: resolve(cwd(), 'tsconfig.json')
       }
     }),
+    // webpack在打包之后，会把所有产出的资源，放到assets对象上。然后这个插件都会把这个对象里面的资源放到html中。
     new HtmlWebpackPlugin({
       template: resolve(cwd(), 'public/index.html')
     }),
     new CleanWebpackPlugin(),
+    // 把搜集的css生成一个单独的文件。然后交给htmlwebpackplugin加入到html进行引用
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css'
     }),
@@ -164,6 +171,7 @@ const config: Configuration = {
 }
 const staticPath = resolve(cwd(), 'static')
 
+// 复制静态资源到指定目录
 try {
   accessSync(staticPath, constants.R_OK)
   config.plugins?.push(

@@ -9,7 +9,6 @@ import WebpackDevServer from 'webpack-dev-server'
 import config from '../config'
 
 const { log } = console
-execSync('tsc -b')
 const compiler = webpack(config)
 if (process.env.NODE_ENV === 'development') {
   const server = new WebpackDevServer(config.devServer, compiler)
@@ -29,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
         log('err=>', err)
         return
       }
+      execSync('tsc -b')
       log(
         stats?.toString({
           colors: true,
@@ -43,8 +43,11 @@ if (process.env.NODE_ENV === 'development') {
       console.error('webpack err', err)
       return
     }
+    execSync('tsc -b')
     if (stats?.hasErrors()) {
-      console.error('webpack stats hasErrors', stats.toString({ color: true }))
+      console.error('webpack stats hasErrors', stats.toString({ colors: true }))
     }
   })
 }
+
+// 看第16节课
