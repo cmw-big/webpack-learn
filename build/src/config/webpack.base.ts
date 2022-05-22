@@ -9,7 +9,6 @@ import glob from 'glob'
 import CopyPlugin from 'copy-webpack-plugin'
 import fs, { accessSync, constants } from 'fs'
 import EslintPlugin from 'eslint-webpack-plugin'
-import { log } from 'console'
 
 function getWebpackBaseConfig(
   relativePath: string = cwd(),
@@ -171,12 +170,15 @@ function getWebpackBaseConfig(
       new DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }),
+      // ESlint的验证
+      // 使用eslint来检查错误，然后爆出来，警告的错误
       new EslintPlugin({
         extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
-        exclude: 'node_modules',
+        exclude: ['**/node_modules'],
         fix: true,
-        emitWarning: true,
-        threads: true
+        emitWarning: false,
+        threads: true,
+        quiet: true
       })
       // new BundleAnalyzerPlugin({}),
     ]

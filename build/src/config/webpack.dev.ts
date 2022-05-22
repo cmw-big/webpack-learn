@@ -1,7 +1,6 @@
 import { resolve } from 'path'
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
 import webpackMerge from 'webpack-merge'
-import EslintPlugin from 'eslint-webpack-plugin'
 import { randomInt } from 'crypto'
 import { type Configuration } from 'webpack'
 import baseConfig from './webpack.base'
@@ -34,17 +33,6 @@ export default function getWebpackDevConfig(
     devServer,
     devtool: 'eval-source-map', // 最适合开发环境的source-map,初始化慢，rebuild快
     mode: 'development',
-    plugins: [
-      // ESlint的验证
-      // 使用eslint来检查错误，然后爆出来，警告的错误
-      new EslintPlugin({
-        extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
-        exclude: 'node_modules',
-        fix: true,
-        emitWarning: false,
-        threads: true
-      })
-    ],
     ...devOptions
   })
 }
