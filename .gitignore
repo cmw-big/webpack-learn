@@ -1,5 +1,4 @@
-node_modules
-.eslintcache
+**/.eslintcache
 **/tsconfig.tsbuildinfo
 **/dist
 **/node_modules
