@@ -174,11 +174,9 @@ function getWebpackBaseConfig(
       // 使用eslint来检查错误，然后爆出来，警告的错误
       new EslintPlugin({
         extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
-        exclude: ['**/node_modules'],
         fix: true,
-        emitWarning: false,
         threads: true,
-        quiet: true
+        quiet: true // 设置为 true 后，仅处理和报告错误，忽略警告
       })
       // new BundleAnalyzerPlugin({}),
     ]
