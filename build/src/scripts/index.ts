@@ -1,53 +1,58 @@
+import { posix } from 'path'
+import fs from 'fs'
 /* eslint-disable no-console */
 /**
  * TODO 编写脚本执行webpack打包，使用config里面的配置
  */
 
-import { execSync } from 'child_process'
-import webpack from 'webpack'
-import WebpackDevServer from 'webpack-dev-server'
-import config from '../config'
+import { Command, type OptionValues } from 'commander'
+import { glob } from 'glob'
+import getConfig from '../config'
+import { getAllPackagesName } from './utils'
+import { runWebpack } from './webpack'
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const inquirer = require('inquirer')
+
+let inquirerConfig: OptionValues = {}
 const { log } = console
-const compiler = webpack(config)
-if (process.env.NODE_ENV === 'development') {
-  const server = new WebpackDevServer(config.devServer, compiler)
-  const runServer = async () => {
-    log('Starting server...')
-    await server.start()
-  }
-  runServer()
-} else if (config.watch) {
-  compiler.watch(
-    {
-      aggregateTimeout: 200,
-      poll: 1000
-    },
-    (err, stats) => {
-      if (err) {
-        log('err=>', err)
-        return
-      }
-      execSync('tsc -b')
-      log(
-        stats?.toString({
-          colors: true,
-          assetsSort: '!size'
-        }) || ''
-      )
-    }
-  )
-} else {
-  compiler.run((err, stats) => {
-    if (err) {
-      console.error('webpack err', err)
-      return
-    }
-    execSync('tsc -b')
-    if (stats?.hasErrors()) {
-      console.error('webpack stats hasErrors', stats.toString({ colors: true }))
+
+const program = new Command()
+
+program
+  .command('dev [package]')
+  .description('start: start the development server')
+  .version('0.0.1', '-v --version')
+  .action(async source => {
+    if (!source) {
+      // 如果没有source的话，我就执行抛出选择列表供用户选择执行哪一个包
+      const packages = getAllPackagesName()
+      const answers = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'which package start',
+          choices: packages
+        }
+      ])
+      Object.values(answers).forEach(item => {
+        const packagePath = glob.sync(item as string, {
+          fs
+        })[0]
+        // 找到入口文件了，可以开始工作了。将环境变成开发环境
+        const config = getConfig(
+          packagePath,
+          {},
+          {
+            mode: 'development',
+            optimization: {},
+            ...inquirerConfig
+          }
+        )
+        runWebpack(config) // 运行webpack
+      })
     }
   })
-}
+program.option('-W --watch', 'watch mode').parse(process.argv)
 
-// 看第16节课
+const options = program.opts()
+inquirerConfig = options

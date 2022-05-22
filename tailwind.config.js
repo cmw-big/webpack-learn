@@ -10,11 +10,14 @@ for (let i = 0; i < 100; i++) {
 }
 
 module.exports = {
-  content: [path.resolve(process.cwd(), 'src/**/*.{js,jsx,ts,tsx}')],
+  content: [
+    'packages/**/src/**/*.{js,jsx,ts,tsx}',
+    'libs/**/src/**/*.{js,jsx,ts,tsx}'
+  ],
   theme: {
     extend: {
       spacing: spacingList,
-      opacity: opacityList,
+      opacity: opacityList
     }
   },
   plugins: []

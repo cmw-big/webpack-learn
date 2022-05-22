@@ -5,12 +5,12 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production ts-node ../../build/src/scripts/index.ts",
+    "build": "cross-env NODE_ENV=production ts-node ../../build/src/scripts/index.ts start",
     "build:work": "cross-env SF_ENV=work pnpm build",
     "build:test": "cross-env SF_ENV=test pnpm build",
     "start": "cross-env NODE_ENV=development  ts-node ../../build/src/scripts/index.ts",
     "start:work": "cross-env SF_ENV=work pnpm start",
-    "webpack":"cross-env NODE_ENV=production webpack --config ../../build/src/config/index.ts"
+    "webpack": "cross-env NODE_ENV=production webpack --config ../../build/src/config/index.ts"
   },
   "keywords": [
     "webpack-learn"

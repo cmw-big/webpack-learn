@@ -10,10 +10,5 @@
       "@/*": ["src/*"]
     }
   },
-  "references": [
-    {
-      "path": "../../libs/common"
-    }
-  ],
   "include": ["src"]
 }

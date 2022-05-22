@@ -1,11 +1,11 @@
-node_modules
-dist
+**/ode_modules
+**/dist/
 .eslintcache
-public
-.eslintrc.js
-global.d.ts
+**/public
+**/.eslintrc.js
+**/global.d.ts
 
 *.json
-postcss.config.js
+**/postcss.config.js
 **/tsconfig.tsbuildinfo
 **/tailwind.config.js

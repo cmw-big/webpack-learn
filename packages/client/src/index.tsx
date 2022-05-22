@@ -16,3 +16,8 @@ render(
   </StrictMode>,
   document.getElementById('root')
 )
+
+const enum test {
+  name = 'cmw1'
+}
+console.log(test.name, '好人啊')
