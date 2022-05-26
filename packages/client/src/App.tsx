@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react'
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom'
 import ErrorBoundary from '@/errorBoundary'
-import compareVersions from ''
 
 const Edit = lazy(() => import('@/page/edit'))
 const Detail = lazy(() => import('@/page/detail'))
