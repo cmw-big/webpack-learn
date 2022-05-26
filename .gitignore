@@ -1,7 +1,6 @@
-node_modules
-.eslintcache
-dist
+**/.eslintcache
 **/tsconfig.tsbuildinfo
 **/dist
 **/node_modules
 **/sourcemap
+**/.pnpm-debug.log

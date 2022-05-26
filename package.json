@@ -9,7 +9,9 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "type-check": "bash type-check.sh"
+    "type-check": "bash type-check",
+    "build": "cross-env NODE_ENV=production ts-node ./build/src/scripts/index.ts",
+    "start": "cross-env NODE_ENV=development ts-node ./build/src/scripts/index.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",

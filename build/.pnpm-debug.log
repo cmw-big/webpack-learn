@@ -1,0 +1,15 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1,
+    "workspacePrefix": "C:\\Users\\cmw10\\Desktop\\codes\\webpack"
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_ADDING_TO_ROOT",
+    "err": {
+      "name": "pnpm",
+      "message": "Running this command will add the dependency to the workspace root, which might not be what you want - if you really meant it, make it explicit by running this command again with the -w flag (or --workspace-root). If you don't want to see this warning anymore, you may set the ignore-workspace-root-check setting to true.",
+      "code": "ERR_PNPM_ADDING_TO_ROOT",
+      "stack": "pnpm: Running this command will add the dependency to the workspace root, which might not be what you want - if you really meant it, make it explicit by running this command again with the -w flag (or --workspace-root). If you don't want to see this warning anymore, you may set the ignore-workspace-root-check setting to true.\n    at Object.handler [as add] (C:\\Users\\cmw10\\AppData\\Local\\pnpm\\global\\5\\.pnpm\\pnpm@7.1.2\\node_modules\\pnpm\\dist\\pnpm.cjs:121785:15)\n    at C:\\Users\\cmw10\\AppData\\Local\\pnpm\\global\\5\\.pnpm\\pnpm@7.1.2\\node_modules\\pnpm\\dist\\pnpm.cjs:176459:51\n    at async run (C:\\Users\\cmw10\\AppData\\Local\\pnpm\\global\\5\\.pnpm\\pnpm@7.1.2\\node_modules\\pnpm\\dist\\pnpm.cjs:176435:34)\n    at async runPnpm (C:\\Users\\cmw10\\AppData\\Local\\pnpm\\global\\5\\.pnpm\\pnpm@7.1.2\\node_modules\\pnpm\\dist\\pnpm.cjs:176653:5)\n    at async C:\\Users\\cmw10\\AppData\\Local\\pnpm\\global\\5\\.pnpm\\pnpm@7.1.2\\node_modules\\pnpm\\dist\\pnpm.cjs:176645:7"
+    }
+  }
+}

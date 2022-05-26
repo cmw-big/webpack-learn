@@ -1,13 +1,17 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { NavLink, Route, Routes, Navigate } from 'react-router-dom'
-
+import compareVersions from 'compare-versions'
 import ErrorBoundary from '@/errorBoundary'
 
 const Edit = lazy(() => import('@/page/edit'))
 const Detail = lazy(() => import('@/page/detail'))
 const EditItem = lazy(() => import('@/page/editItem'))
-// 这个上下文，赋值
+
 export default function App() {
+  useEffect(() => {
+    const result = compareVersions('11.1.1', '10.0.0') //  1
+    console.log(result)
+  })
   return (
     <ErrorBoundary>
       <h1>我是App</h1>

@@ -1,3 +1,4 @@
+import { call, put, takeEvery } from 'redux-saga/effects'
 import { getAllStudents } from '@/services/student'
 
 import {
@@ -6,7 +7,6 @@ import {
   GET_ALL_STUDENTS,
   Student
 } from '@/store/actions/students'
-import { call, put, takeEvery } from 'redux-saga/effects'
 
 function* queryAllStudents() {
   // yield put(createQueryStudentLoading(true))

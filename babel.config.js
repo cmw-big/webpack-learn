@@ -23,7 +23,8 @@ module.exports = {
         modules: false, // 不采取任何模块化的方式，是为了更好的tree-shaking
         shippedProposals: true // 将代码中提案的也进行转化
       }
-    ]
+    ],
+    ['@babel/preset-typescript', { optimizeConstEnums: true }]
   ],
   plugins: [
     // 将一些babel生成的helper方法，弄成公共的，而不是每一个地方都引用一次帮助方法。

@@ -1,5 +1,5 @@
 #!/bin/sh
-PATH=$PATH:/usr/local/bin:/usr/local/sbin;
+PATH=$PATH:/usr/local/bin:/usr/local/sbin
 
 pnpm exec lint-staged
 
