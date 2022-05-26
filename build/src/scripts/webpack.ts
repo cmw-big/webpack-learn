@@ -35,6 +35,7 @@ export function runWebpack(config: Configuration) {
       }
     )
   } else {
+    console.dir(config, { depth: null })
     compiler.run((err, stats) => {
       if (err) {
         console.error('webpack err', err)
@@ -46,6 +47,7 @@ export function runWebpack(config: Configuration) {
           stats.toString({ colors: true, errorDetails: true })
         )
       }
+      console.log(stats?.toString({ colors: true, errorDetails: true }))
     })
   }
 }

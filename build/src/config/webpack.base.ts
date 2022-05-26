@@ -159,7 +159,11 @@ function getWebpackBaseConfig(
       }),
       // webpack在打包之后，会把所有产出的资源，放到assets对象上。然后这个插件都会把这个对象里面的资源放到html中。
       new HtmlWebpackPlugin({
-        template: resolve(relativePath, 'public/index.html')
+        template: resolve(relativePath, 'public/index.html'),
+        minify: {
+          collapseWhitespace: true, // 压缩空格
+          removeComments: true // 删除注释
+        }
       }),
       new CleanWebpackPlugin(),
       // 把搜集的css生成一个单独的文件。然后交给htmlwebpackplugin加入到html进行引用

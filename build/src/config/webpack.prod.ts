@@ -22,7 +22,7 @@ export default function getWebpackProdConfig(
     optimization: {
       minimize: true,
       // 在 webpack@5 中，你可以使用 `...` 语法来扩展现有的 minimizer 配置。
-      minimizer: [`...`, new CssMinimizerPlugin()]
+      minimizer: [`...`, new CssMinimizerPlugin()] // 压缩css，但是这只是在mode=production时生效。如果想要在development模式下生效，就需要配置optimization.minimizer:true
     },
     plugins: [
       // 针对source-map的设置，生成哪些map文件。并且地址是多少可以自己添加。在线上出问题的时候。可以进行排查。

@@ -48,7 +48,6 @@ async function inquirePromptList() {
           inquirerConfig.dev || env.NODE_ENV === 'development'
             ? 'development'
             : 'production',
-        optimization: {},
         watch: !!inquirerConfig.watch
       }
     )
