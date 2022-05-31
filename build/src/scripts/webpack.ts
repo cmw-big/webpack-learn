@@ -35,7 +35,6 @@ export function runWebpack(config: Configuration) {
       }
     )
   } else {
-    console.dir(config, { depth: null })
     compiler.run((err, stats) => {
       if (err) {
         console.error('webpack err', err)
