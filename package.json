@@ -2,6 +2,7 @@
   "name": "webpack",
   "version": "1.0.0",
   "description": "",
+  "type": "commonjs",
   "private": true,
   "workspaces": [
     "packages/*",

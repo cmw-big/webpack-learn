@@ -1,4 +1,5 @@
-﻿import glob from 'glob'
+﻿import { log } from 'console'
+import glob from 'glob'
 import packageJson from '../../../package.json'
 
 export function getAllPackagesName(paths: string[] = packageJson.workspaces) {
@@ -8,3 +9,6 @@ export function getAllPackagesName(paths: string[] = packageJson.workspaces) {
   })
   return packages
 }
+
+const a = await Promise.resolve(1)
+log(a)
