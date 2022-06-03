@@ -1,7 +1,7 @@
 import { type FC } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import { randomObject } from '@mono/common'
-import VirtualizedList from '@/components/virtualized-list'
+import VirtualizedList from '@/components/virtualized-list/index'
 import VirtualizeItem from '@/components/virtualized-list/item'
 
 const Detail: FC = () => {

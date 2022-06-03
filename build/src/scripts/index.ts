@@ -5,28 +5,19 @@ import fs from 'fs'
  */
 
 import { Command, type OptionValues } from 'commander'
-import { glob } from 'glob'
+import globModule from 'glob'
 import { env } from 'process'
-import getConfig from '../config'
-import { getAllPackagesName } from './utils'
-import { runWebpack } from './webpack'
+import inquirer from 'inquirer'
+import getConfig from '../config/index.js'
+import { getAllPackagesName } from './utils.js'
+import { runWebpack } from './webpack.js'
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const inquirer = require('inquirer')
-
+const { glob } = globModule
 let inquirerConfig: OptionValues = {}
-const { log } = console
-
 const program = new Command()
-
-// program
-//   .option('dev [package]')
-//   .description('start: start the development server')
-//   .version('0.0.1', '-v --version')
-//   .action(async source => {
-// if (!source) {
 // 如果没有source的话，我就执行抛出选择列表供用户选择执行哪一个包
 const packages = getAllPackagesName()
+
 async function inquirePromptList() {
   const answers = await inquirer.prompt([
     {
@@ -35,7 +26,7 @@ async function inquirePromptList() {
       choices: packages
     }
   ])
-  Object.values(answers).forEach(item => {
+  Object.values(answers).some(item => {
     const packagePath = glob.sync(item as string, {
       fs
     })[0]
@@ -52,12 +43,11 @@ async function inquirePromptList() {
       }
     )
     runWebpack(config) // 运行webpack
+    return true
   })
 }
 inquirePromptList()
 
-// }
-// })
 program
   .option('-w --watch', 'watch mode')
   .option('-d --dev')

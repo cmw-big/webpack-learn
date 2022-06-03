@@ -1,9 +1,9 @@
 import { resolve } from 'path'
 import type { Configuration as DevServerConfiguration } from 'webpack-dev-server'
-import webpackMerge from 'webpack-merge'
+import * as webpackMergeModule from 'webpack-merge'
 import { randomInt } from 'crypto'
 import { type Configuration } from 'webpack'
-import baseConfig from './webpack.base'
+import baseConfig from './webpack.base.js'
 
 // 开发服务器配置（其中interface扩展了webpack的Configuration接口，扩展了一个devServer属性，这样写的话就不会报错）
 const devServer: DevServerConfiguration = {
@@ -29,7 +29,7 @@ export default function getWebpackDevConfig(
   baseOptions: Configuration = {},
   devOptions: Configuration = {}
 ) {
-  return webpackMerge(baseConfig(relativePath, baseOptions), {
+  return webpackMergeModule.merge(baseConfig(relativePath, baseOptions), {
     devServer,
     devtool: 'eval-source-map', // 最适合开发环境的source-map,初始化慢，rebuild快
     mode: 'development',

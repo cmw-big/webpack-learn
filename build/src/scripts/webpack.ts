@@ -1,10 +1,8 @@
-﻿import { execSync } from 'child_process'
-import { log } from 'console'
+﻿import { log } from 'console'
 import webpack, { type Configuration } from 'webpack'
 import WebpackDevServer from 'webpack-dev-server'
 
 export function runWebpack(config: Configuration) {
-  // 每次打包之前，先进行类型检查
   const compiler = webpack(config)
   if (process.env.NODE_ENV === 'development') {
     const server = new WebpackDevServer(config.devServer, compiler)

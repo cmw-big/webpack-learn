@@ -2,15 +2,10 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": "./dist",
+    "outDir": "dist/types/lib",
     "noEmit": false,
     "baseUrl": "./"
   },
   "include": ["./src/"],
-  "exclude": ["node_modules", "dist", "babel.config.js", "node_modules"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  "exclude": ["node_modules", "dist", "babel.config.js"]
 }

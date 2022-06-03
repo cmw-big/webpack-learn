@@ -2,13 +2,18 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": "dist/types",
-    "rootDir": "src",
+    "outDir": "dist/types/client",
     "baseUrl": "./",
     "module": "ESNEXT",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    "emitDeclarationOnly": false
   },
+  "references": [
+    {
+      "path": "../../libs/common/"
+    }
+  ],
   "include": ["src"]
 }

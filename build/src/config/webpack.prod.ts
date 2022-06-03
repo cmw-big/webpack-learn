@@ -1,18 +1,18 @@
-import { log } from 'console'
-import { type Configuration, SourceMapDevToolPlugin } from 'webpack'
-import webpackMerge from 'webpack-merge'
+import webpack, { type Configuration } from 'webpack'
+import * as webpackMerge from 'webpack-merge'
 import FileManagerWebpackPlugin from 'filemanager-webpack-plugin'
 import { resolve } from 'path'
 import { cwd } from 'process'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
-import baseConfig from './webpack.base'
+import baseConfig from './webpack.base.js'
 
+const { SourceMapDevToolPlugin } = webpack
 export default function getWebpackProdConfig(
   relativePath: string,
   baseOptions: Configuration = {},
   prodOptions: Configuration = {}
 ) {
-  return webpackMerge(baseConfig(relativePath, baseOptions), {
+  return webpackMerge.merge(baseConfig(relativePath, baseOptions), {
     externals: {
       react: 'React', // key是模块中引入的包的名称，value是最终cdn导出后暴露在全局的变量。
       'react-dom': 'ReactDOM'

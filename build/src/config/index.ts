@@ -1,8 +1,8 @@
-import devConfig from './webpack.dev'
-import prodConfig from './webpack.prod'
+import getDevConfig from './webpack.dev.js'
+import getProdConfig from './webpack.prod.js'
 
-let config = prodConfig
+let getConfig = getProdConfig
 if (process.env.NODE_ENV !== 'production') {
-  config = devConfig
+  getConfig = getDevConfig
 }
-export default config
+export default getConfig

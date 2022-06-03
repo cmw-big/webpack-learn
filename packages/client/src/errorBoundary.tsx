@@ -1,4 +1,4 @@
-import React, { Component, ErrorInfo } from 'react'
+import { Component, ErrorInfo } from 'react'
 
 export default class ErrorBoundary extends Component {
   state = {

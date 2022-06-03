@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "rootDir": "./",
     "incremental": true /* Enable incremental compilation */,
     "target": "ESNEXT" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     "jsx": "react-jsx" /* Specify what JSX code is generated. */,
@@ -23,12 +24,17 @@
     "resolveJsonModule": true, // 可以解析json导入json文件
     "emitDeclarationOnly": true // 只输出声明文件,不输出js文件。使用tsc生成声明文件，使用后babel转化ts文件
   },
-  "include": ["packages/**/src", "build", "global.d.ts", "package.json"],
-  "exclude": ["commitlint.config.js", "dist", "node_modules/**"],
-  "references": [{ "path": "./libs/common" }, { "path": "./packages/client" }],
+  "include": [
+    "packages/**/src",
+    "build",
+    "global.d.ts",
+    "package.json",
+    "postcss.config.cjs"
+  ],
+  "exclude": ["commitlint.config.cjs", "dist", "node_modules/**"],
+  "references": [{ "path": "./libs/common" }],
   "ts-node": {
     "esm": true,
-    "experimentalSpecifierResolution": true,
     "compilerOptions": {
       "module": "esnext"
     }

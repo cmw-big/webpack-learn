@@ -62,7 +62,6 @@ module.exports = {
     'import/no-unresolved': 0, // 关闭强制导入模块不存在的报错
     'default-param-last': 0, // 关闭默认参数必须放在最后一个参数的警告
     'no-restricted-syntax': 0, // 关闭for of循环警告
-    'no-unused-vars': 0, // 关闭未使用的变量警告
     'no-redeclare': 0, // 关闭重复声明变量警告
     'func-names': 0, // 关闭函数表达式必须有名字警告
     'no-void': 0, // 关闭void警告
@@ -71,8 +70,7 @@ module.exports = {
     'import/export': 0, // 关闭导入导出警告
     'no-plusplus': 0, // 关闭++ --警告
     'no-shadow': 0, // 关闭变量声明时使用已声明的变量警告
-    'react/require-default-props': 0, // 关闭组件的props必须有defaultProps警告
-    'import/no-extraneous-dependencies': 0 // 关闭不必要的依赖警告
+    'react/require-default-props': 0 // 关闭组件的props必须有defaultProps警告
   },
   overrides: [
     {

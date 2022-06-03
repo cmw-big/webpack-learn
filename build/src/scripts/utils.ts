@@ -1,6 +1,9 @@
-﻿import { log } from 'console'
-import glob from 'glob'
-import packageJson from '../../../package.json'
+﻿import globModule from 'glob'
+import { createRequire } from 'module'
+
+const { glob } = globModule
+const requireFn = createRequire(import.meta.url)
+const packageJson = requireFn('../../../package.json')
 
 export function getAllPackagesName(paths: string[] = packageJson.workspaces) {
   const packages: string[] = []
@@ -9,6 +12,3 @@ export function getAllPackagesName(paths: string[] = packageJson.workspaces) {
   })
   return packages
 }
-
-const a = await Promise.resolve(1)
-log(a)
