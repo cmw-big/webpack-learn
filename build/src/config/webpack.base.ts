@@ -1,7 +1,6 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { posix, resolve } from 'path'
 import webpack, { Configuration } from 'webpack'
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import { cwd } from 'process'
@@ -150,17 +149,6 @@ function getWebpackBaseConfig(
       ]
     },
     plugins: [
-      //   将ts的类型检查放入单独的进程。不然每次热更新编译一次的话。类型检查都会比较慢
-      // new ForkTsCheckerWebpackPlugin({
-      //   async: true,
-      //   typescript: {
-      //     configFile: resolve(relativePath, 'tsconfig.json'),
-      //     diagnosticOptions: {
-      //       semantic: true, // 只检查语义错误
-      //       syntactic: true // 语法诊断
-      //     }
-      //   }
-      // }),
       // webpack在打包之后，会把所有产出的资源，放到assets对象上。然后这个插件都会把这个对象里面的资源放到html中。
       new HtmlWebpackPlugin({
         template: resolve(relativePath, 'public/index.html'),

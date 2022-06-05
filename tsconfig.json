@@ -25,13 +25,13 @@
     "emitDeclarationOnly": true // 只输出声明文件,不输出js文件。使用tsc生成声明文件，使用后babel转化ts文件
   },
   "include": [
-    "packages/**/src",
-    "build",
     "global.d.ts",
     "package.json",
-    "postcss.config.cjs"
+    "postcss.config.cjs",
+    "packages",
+    "lib"
   ],
-  "exclude": ["commitlint.config.cjs", "dist", "node_modules/**"],
+  "exclude": ["commitlint.config.cjs", "dist", "node_modules"],
   "references": [{ "path": "./libs/common" }],
   "ts-node": {
     "esm": true,

@@ -37,7 +37,6 @@ module.exports = {
   },
   rules: {
     'no-console': [1, { allow: ['warn', 'error'] }], // 使用console除了规定的都警告
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-unused-vars': 0, // 有声明后未被使用的变量警告
     'react/jsx-filename-extension': [
       1,
@@ -70,7 +69,8 @@ module.exports = {
     'import/export': 0, // 关闭导入导出警告
     'no-plusplus': 0, // 关闭++ --警告
     'no-shadow': 0, // 关闭变量声明时使用已声明的变量警告
-    'react/require-default-props': 0 // 关闭组件的props必须有defaultProps警告
+    'react/require-default-props': 0, // 关闭组件的props必须有defaultProps警告
+    'import/no-extraneous-dependencies': 0 // 关闭不允许有外部依赖的警告
   },
   overrides: [
     {

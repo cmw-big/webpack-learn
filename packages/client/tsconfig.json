@@ -11,6 +11,6 @@
     "emitDeclarationOnly": false,
     "noEmit": false
   },
-
+  "exclude": ["node_modules", "dist", "babel.config.js"],
   "include": ["src"]
 }
