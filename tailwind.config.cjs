@@ -7,7 +7,7 @@ for (let i = 0; i < 100; i++) {
   opacityList[i] = `.${i / 10}`
 }
 
-module.exports =  {
+module.exports = {
   content: [
     'packages/**/src/**/*.{js,jsx,ts,tsx}',
     'libs/**/src/**/*.{js,jsx,ts,tsx}'

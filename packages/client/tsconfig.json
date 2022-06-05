@@ -8,12 +8,9 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "noEmit": false
   },
-  "references": [
-    {
-      "path": "../../libs/common/"
-    }
-  ],
+
   "include": ["src"]
 }
