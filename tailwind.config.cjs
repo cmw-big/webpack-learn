@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const colors = require('tailwindcss/colors')
+
 const spacingList = {}
 for (let i = 0; i < 100000; i++) {
   spacingList[i] = `${i}px`
@@ -15,7 +18,8 @@ module.exports = {
   theme: {
     extend: {
       spacing: spacingList,
-      opacity: opacityList
+      opacity: opacityList,
+      colors
     }
   },
   plugins: []

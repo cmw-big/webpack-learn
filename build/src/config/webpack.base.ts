@@ -81,7 +81,6 @@ function getWebpackBaseConfig(
               options: {
                 // 只做代码转化，不做类型检查
                 // add transpileOnly option if you use ts-loader < 9.3.0
-                transpileOnly: false,
                 configFile: resolve(
                   relativePath,
                   `tsconfig${
@@ -171,7 +170,7 @@ function getWebpackBaseConfig(
       // ESlint的验证
       // 使用eslint来检查错误，然后爆出来，警告的错误
       new EslintPlugin({
-        extensions: ['js', 'ts', 'tsx', 'jsx', 'josn'],
+        extensions: ['.js', '.ts', '.tsx', '.jsx', '.josn'],
         fix: true,
         threads: true,
         quiet: true // 设置为 true 后，仅处理和报告错误，忽略警告

@@ -2,8 +2,8 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": "dist/types/lib",
-    "noEmit": false,
+    "outDir": "./dist/types/lib",
+    "emitDeclarationOnly": true,
     "baseUrl": "./"
   },
   "include": ["./src/"],

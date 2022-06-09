@@ -1,14 +1,6 @@
 {
-   "extends": "../tsconfig.setting.dev.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "composite": true,
-    "outDir": "dist",
-    "rootDir": "src"
-  },
-  "include": ["src"],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
+    "jsx": "react-jsxdev"
   }
 }

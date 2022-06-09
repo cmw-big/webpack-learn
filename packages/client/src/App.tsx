@@ -9,9 +9,15 @@ const EditItem = lazy(() => import('@/page/editItem'))
 export default function App() {
   return (
     <ErrorBoundary>
-      <h1>我是App</h1>
+      <div className="w-full flex h-100 bg-Green-#059669">
+        <div className="">子元素</div>
+        {/* <input type="text" className="flex-auto bg-gray-400 test" />
+        <span className="cancel flex-auto">取消</span> */}
+      </div>
+      {/* <h1>我是App</h1> */}
+
       {/* ui导航 */}
-      <nav>
+      {/* <nav>
         <NavLink to="/edit">
           <h1>edit</h1>
         </NavLink>
@@ -25,8 +31,8 @@ export default function App() {
         <NavLink to="/xxx">
           <h1>xxx</h1>
         </NavLink>
-      </nav>
-      <Routes>
+      </nav> */}
+      {/* <Routes>
         <Route>
           <Route
             path="edit"
@@ -64,7 +70,7 @@ export default function App() {
             element={<Navigate to="detail" replace state={{ a: 1 }} />}
           />
         </Route>
-      </Routes>
+      </Routes> */}
     </ErrorBoundary>
   )
 }

@@ -2,15 +2,17 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "composite": true,
-    "outDir": "dist/types/client",
+    "outDir": "dist",
     "baseUrl": "./",
-    "module": "ESNEXT",
     "paths": {
       "@/*": ["src/*"]
-    },
-    "emitDeclarationOnly": false,
-    "noEmit": false
+    }
   },
   "exclude": ["node_modules", "dist", "babel.config.js"],
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../../libs/common"
+    }
+  ]
 }
