@@ -1,6 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const colors = require('tailwindcss/colors')
 
+delete colors.lightBlue
+delete colors.warmGray
+delete colors.trueGray
+delete colors.coolGray
+delete colors.blueGray
+
 const spacingList = {}
 for (let i = 0; i < 1000; i++) {
   spacingList[i] = `${i}px`
@@ -20,6 +26,5 @@ module.exports = {
       opacity: opacityList,
       colors
     }
-  },
-  plugins: []
+  }
 }
