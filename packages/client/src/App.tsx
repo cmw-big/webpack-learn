@@ -9,7 +9,7 @@ const EditItem = lazy(() => import('@/page/editItem'))
 export default function App() {
   return (
     <ErrorBoundary>
-      <div className="w-full flex h-100 bg-Green-#059669">
+      <div className="w-full flex h-100 bg-green-500">
         <div className="">子元素</div>
         {/* <input type="text" className="flex-auto bg-gray-400 test" />
         <span className="cancel flex-auto">取消</span> */}
