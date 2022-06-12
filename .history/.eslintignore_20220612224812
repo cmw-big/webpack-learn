@@ -11,5 +11,4 @@
 **/tailwind.config.js
 **/.pnpm-debug.log
 **/node_modules
-
 **/dist
