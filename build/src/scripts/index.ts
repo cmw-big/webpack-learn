@@ -30,14 +30,18 @@ async function inquirePromptList() {
     const packagePath = glob.sync(item as string, {
       fs
     })[0]
-    console.log(inquirerConfig.dev)
     // 找到入口文件了，可以开始工作了。将环境变成开发环境
     const config = getConfig(
       packagePath,
-      {},
       {
         mode:
-          inquirerConfig.dev || env.NODE_ENV === 'development'
+          inquirerConfig.dev || env.ENV === 'development'
+            ? 'development'
+            : 'production'
+      },
+      {
+        mode:
+          inquirerConfig.dev || env.ENV === 'development'
             ? 'development'
             : 'production',
         watch: !!inquirerConfig.watch

@@ -12,6 +12,3 @@
 //   </StrictMode>,
 //   document.getElementById('root')
 // )
-import { sum } from './sum'
-
-sum(1, 2)

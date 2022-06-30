@@ -1,3 +1,4 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "livePreview.defaultPreviewPath": "/build/笔记/02-模块的兼容性处理/index.html"
 }

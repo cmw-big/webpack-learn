@@ -165,7 +165,8 @@ function getWebpackBaseConfig(
       }),
       // 定义全局变量,将代码中进行文本的替换
       new DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        'process.env.NODE_ENV':
+          JSON.stringify(options?.mode) ?? JSON.stringify(process.env.NODE_ENV)
       }),
       // ESlint的验证
       // 使用eslint来检查错误，然后爆出来，警告的错误

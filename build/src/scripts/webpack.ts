@@ -15,7 +15,7 @@ export function runWebpack(config: Configuration) {
     compiler.watch(
       {
         aggregateTimeout: 200,
-        ignored: ['/**node_modules', '**/dist'], // 这些文件改变，不重新打包
+        ignored: ['**/node_modules', '**/dist'], // 这些文件改变，不重新打包
         poll: false // 是否开启轮询，不开启，浪费性能
       },
       (err, stats) => {
