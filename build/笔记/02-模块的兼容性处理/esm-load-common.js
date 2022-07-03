@@ -1,15 +1,19 @@
 ﻿// commonjs加载esm
 ;(() => {
   const modules = {
-    './src/title.js': function (module, exports, require) {
-      // 以后可以通过这个属性来判断是不是esm
-      require.r(exports)
-      require.d(exports, {
-        default: () => DEFAULT_EXPORT,
-        age: () => age
-      })
-      const DEFAULT_EXPORT = 'title_name' // 默认导出
-      const age = 'title_age'
+    './src/index.tsx': function (module, exports, require) {
+      require.r(exports) // 先表示这是一个esm
+      const webpackSUm = require('./src/sum.js')
+      const webpackNSum = require.n(webpackSUm)
+      const a = (0, webpackNSum().sum)(1, 2)
+      console.log(a)
+    },
+    './src/sum.js': function (module, exports, require) {
+      module.exports = {
+        sum: (a, b) => {
+          return a + b
+        }
+      }
     }
   }
   var cache = {}
@@ -48,9 +52,20 @@
       }
     }
   }
-  //  ./src/index.js的代码
+  // 这个方法有什么作用呢？
+  // 主要的目的是为了兼容。如果是esm，则默认导出肯定是default。如果收commonjs，导入的是module
   ;(() => {
-    let title = require('./src/title.js')
-    console.log(title)
+    require.n = module => {
+      // 如果是esm，就返回default，如果是commonjs，就返回module
+      var getter =
+        module && module.__esModule ? () => module['default'] : () => module
+      // 同时给geeter方法上定义一个属性表示自身
+      require.d(getter, { a: getter })
+      return getter
+    }
+  })()
+  // 入口模块。
+  ;(() => {
+    const title = require('./src/index.tsx')
   })()
 })()

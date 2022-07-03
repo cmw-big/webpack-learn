@@ -51,7 +51,7 @@ export default function getWebpackProdConfig(
         }
       })
     ],
-    // devtool: 'hidden-source-map' // 最适合生产环境的source-map
+    devtool: 'hidden-source-map', // 最适合生产环境的source-map
     ...prodOptions
   })
 }

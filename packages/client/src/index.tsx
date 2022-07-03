@@ -12,3 +12,5 @@
 //   </StrictMode>,
 //   document.getElementById('root')
 // )
+
+import('./sum').then(res => console.log(res))

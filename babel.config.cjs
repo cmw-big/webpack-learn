@@ -11,10 +11,11 @@ module.exports = {
       '@babel/preset-env',
       {
         targets: {
-          edge: '17',
-          firefox: '60',
-          chrome: '67',
-          safari: '11.1'
+          // edge: '17',
+          // firefox: '60',
+          // chrome: '67',
+          // safari: '11.1'
+          chrome: 90
         },
         // Babel 将检查你的所有代码，以便查找目标环境中缺失的功能，然后只把必须的 polyfill 包含进来。
         useBuiltIns: 'usage',
