@@ -1,16 +1,15 @@
-import fs from 'fs'
 /* eslint-disable no-console */
 /**
  * TODO 编写脚本执行webpack打包，使用config里面的配置
  */
-
+import fs from 'fs'
 import { Command, type OptionValues } from 'commander'
 import globModule from 'glob'
 import { env } from 'process'
 import inquirer from 'inquirer'
-import getConfig from '../config/index.js'
-import { getAllPackagesName } from './utils.js'
-import { runWebpack } from './webpack.js'
+import getConfig from '../config/index'
+import { getAllPackagesName } from './utils'
+import { runWebpack } from './webpack'
 
 const { glob } = globModule
 let inquirerConfig: OptionValues = {}

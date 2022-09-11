@@ -1,5 +1,5 @@
-import getDevConfig from './webpack.dev.js'
-import getProdConfig from './webpack.prod.js'
+import getDevConfig from './webpack.dev'
+import getProdConfig from './webpack.prod'
 
 let getConfig = getProdConfig
 if (process.env.NODE_ENV !== 'production') {

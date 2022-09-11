@@ -4,7 +4,7 @@ import FileManagerWebpackPlugin from 'filemanager-webpack-plugin'
 import { resolve } from 'path'
 import { cwd } from 'process'
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin'
-import baseConfig from './webpack.base.js'
+import baseConfig from './webpack.base'
 
 const { SourceMapDevToolPlugin } = webpack
 export default function getWebpackProdConfig(

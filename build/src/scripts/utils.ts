@@ -1,9 +1,7 @@
 ﻿import globModule from 'glob'
-import { createRequire } from 'module'
+import packageJson from '../../../package.json'
 
 const { glob } = globModule
-const requireFn = createRequire(import.meta.url)
-const packageJson = requireFn('../../../package.json')
 
 export function getAllPackagesName(paths: string[] = packageJson.workspaces) {
   const packages: string[] = []
