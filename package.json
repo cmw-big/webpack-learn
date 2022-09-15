@@ -83,6 +83,7 @@
     "@babel/runtime-corejs3": "^7.18.3",
     "@types/redux-logger": "^3.0.9",
     "@types/webpack-bundle-analyzer": "^4.4.1",
+    "clsx": "^1.2.1",
     "core-js": "^3.22.8",
     "eslint-config-airbnb": "^19.0.4",
     "nanoid": "^3.3.4",

@@ -33,6 +33,7 @@ importers:
       babel-loader: ^8.2.5
       chalk: 4.1.2
       clean-webpack-plugin: ^4.0.0
+      clsx: ^1.2.1
       commander: ^9.3.0
       copy-webpack-plugin: ^10.2.4
       core-js: ^3.22.8
@@ -92,6 +93,7 @@ importers:
       '@babel/runtime-corejs3': 7.18.3
       '@types/redux-logger': 3.0.9
       '@types/webpack-bundle-analyzer': 4.4.1_webpack-cli@4.9.2
+      clsx: 1.2.1
       core-js: 3.22.8
       eslint-config-airbnb: 19.0.4_pefmhapqkyo3bhsmfeolqklhny
       nanoid: 3.3.4
@@ -3180,6 +3182,11 @@ packages:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
     dev: true
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /collection-visit/1.0.0:
     resolution: {integrity: sha512-lNkKvzEeMBBjUGHZ+q6z9pSJla0KWAQPvtzhEV9+iGyQYG+pBpl7xKDhxoNSOZH2hhv0v5k0y2yAM4o4SjoSkw==}

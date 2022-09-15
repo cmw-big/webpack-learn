@@ -30,7 +30,7 @@ export default function getWebpackDevConfig(
 ) {
   return webpackMergeModule.merge(baseConfig(relativePath, baseOptions), {
     devServer,
-    devtool: 'eval-source-map', // 最适合开发环境的source-map,初始化慢，rebuild快
+    devtool: 'eval-source-map', // 最适合开发环境的eval-source-map,初始化慢，rebuild快
     mode: 'development',
     ...devOptions
   })
